@@ -1,10 +1,18 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const HomePage = () => {
+  const navigation = useNavigation();
   const handleBoxPress = (boxNumber) => {
     console.log(`Box ${boxNumber} pressed`);
-    // Add your logic for handling box press event here
+    switch (boxNumber) {
+      case 1:
+        navigation.navigate("MeditationTimer");
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -71,7 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     // marginHorizontal: 20,
     margin: 0,
-    width: '70%',
+    width: '100%',
   },
   box: {
     width: 120,
