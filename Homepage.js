@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const HomePage = () => {
@@ -18,49 +18,32 @@ const HomePage = () => {
   return (
     <View style={styles.screen}>
       <View style={styles.gridContainer}>
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(1)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(1)}>
+          <Image source={require("./assets/timer.png")} style={styles.boxImage} />
           <Text style={styles.boxText}>Meditation Timer</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(2)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(2)}>
           <Text style={styles.boxText}>Calendar</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(3)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(3)}>
           <Text style={styles.boxText}>Videos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(4)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(4)}>
           <Text style={styles.boxText}>Register</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(5)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(5)}>
           <Text style={styles.boxText}>Donate</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(6)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(6)}>
           <Text style={styles.boxText}>Meditation Stats</Text>
         </TouchableOpacity>
       </View>
@@ -70,7 +53,7 @@ const HomePage = () => {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop:50,
+    paddingTop: 50,
     flex: 1,
     justifyContent: "space-evenly",
     backgroundColor: "#EAE2FA",
@@ -79,7 +62,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     margin: 0,
-    padding:40,
+    padding: 35,
     width: "100%",
     backgroundColor: "#EAE2FA",
   },
@@ -90,10 +73,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-  
   },
+  // boxImage: {
+  //   width: 60, 
+  //   height: 100, 
+  //   resizeMode: "contain",
+  // },
   boxText: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: "bold",
     color: "#ffffff",
     textAlign: "center",
