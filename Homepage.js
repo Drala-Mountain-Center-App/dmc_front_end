@@ -16,7 +16,7 @@ const HomePage = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.screen}>
       <View style={styles.gridContainer}>
         <TouchableOpacity
           style={styles.box}
@@ -69,30 +69,34 @@ const HomePage = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
+    paddingTop:50,
     flex: 1,
-    alignItems: 'space-evenly',
-    justifyContent: 'space-evenly',
+    justifyContent: "space-evenly",
+    backgroundColor: "#EAE2FA",
   },
   gridContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    // marginHorizontal: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
     margin: 0,
-    width: '100%',
+    padding:40,
+    width: "100%",
+    backgroundColor: "#EAE2FA",
   },
   box: {
-    width: 120,
-    height: 150,
-    backgroundColor: '#FCBB2E',
+    width: "40%",
+    height: "65%",
+    backgroundColor: "#FCBB2E",
     borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+  
   },
   boxText: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    fontWeight: "bold",
+    color: "#ffffff",
+    textAlign: "center",
   },
 });
 
