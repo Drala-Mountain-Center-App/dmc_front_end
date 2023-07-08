@@ -26,13 +26,13 @@ export default function App() {
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: "#EAE2FA",
-    height: "100%",
+    flex: 1,
   },
   container: {
     flex: 1,
     backgroundColor: "#EAE2FA",
     alignItems: "center",
-    justifyContent: "space between",
+    justifyContent: "space-between",
     width: "100%",
   },
 });
