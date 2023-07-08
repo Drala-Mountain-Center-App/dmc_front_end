@@ -14,8 +14,8 @@ export default function App() {
       <Header />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="HomePage" component={HomePage} />
-          <Stack.Screen name="MeditationTimer" component={MeditationTimer} />
+          <Stack.Screen name="Home Page" component={HomePage} />
+          <Stack.Screen name="Meditation Timer" component={MeditationTimer} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
