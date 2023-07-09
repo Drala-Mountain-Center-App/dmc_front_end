@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, Linking } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const HomePage = () => {
@@ -18,6 +18,10 @@ const HomePage = () => {
   };
 
   return (
+    <ImageBackground
+      source={require("./assets/home-plan-your-event-background-scaled-1.jpg")} 
+      style={styles.backgroundImage}
+    >
     <View style={styles.screen}>
       <View style={styles.gridContainer}>
         <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(1)}>
@@ -50,20 +54,25 @@ const HomePage = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(6)}>
-          <Image source={require("./assets/meditate.png")} style={styles.boxImage} />
+          <Image source={require("./assets/meditate.png")} style={styles.meditationImage} />
           <Text style={styles.boxText}>Meditation Stats</Text>
         </TouchableOpacity>
       </View>
     </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+  },
   screen: {
     paddingTop: 5,
     flex: 1,
     justifyContent: "space-evenly",
-    backgroundColor: "#EAE2FA",
   },
   gridContainer: {
     flexDirection: "row",
@@ -71,7 +80,6 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 35,
     width: "100%",
-    backgroundColor: "#EAE2FA",
   },
   box: {
     width: 140,
@@ -79,17 +87,28 @@ const styles = StyleSheet.create({
     backgroundColor: "#FCBB2E",
     borderRadius: 10,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
+    padding: 6,
+    borderColor: "#da990c",
+    borderWidth: 2,
+    shadowColor: "#000000",
+    shadowOpacity: 0.3,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowRadius: 4,
   },
   boxImage: {
     tintColor: "white",
-    height: 120,
-    width: 120,
+    height: 110,
+    width: 110,
   },
   meditationImage: {
-    backgroundColor: "white",
-    height: 120,
-    width: 120,
+    height: 110,
+    width: 110,
+    padding: 6,
+    justifyContent: "space-between",
   },
   registerImage: {
     tintColor: "white",
