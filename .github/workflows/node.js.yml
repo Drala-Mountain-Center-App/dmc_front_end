@@ -40,7 +40,7 @@ jobs:
       uses: cypress-io/github-action@v2
       with:
         start: npm run start
-        wait-on: http://localhost:19006
+        wait-on: http://localhost:19001
         config-file: cypress.json
         browser: chrome
 
