@@ -41,6 +41,6 @@ jobs:
       with:
         start: npm run start
         wait-on: http://localhost:19001
-        config-file: cypress.json
+        config-file: cypress.config.js
         browser: chrome
 
