@@ -17,7 +17,6 @@ const HomePage = () => {
     }
   };
 
-
   return (
     <ImageBackground
       source={require("./assets/home-plan-your-event-background-scaled-1.jpg")} 
