@@ -8,7 +8,7 @@ const HomePage = () => {
     console.log(`Box ${boxNumber} pressed`);
     switch (boxNumber) {
       case 1:
-        navigation.navigate("MeditationTimer");
+        navigation.navigate("Meditation Timer");
         break;
       default:
         break;
@@ -53,7 +53,7 @@ const HomePage = () => {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: 50,
+    paddingTop: 5,
     flex: 1,
     justifyContent: "space-evenly",
     backgroundColor: "#EAE2FA",
@@ -67,18 +67,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#EAE2FA",
   },
   box: {
-    width: "40%",
-    height: "65%",
+    width: 140,
+    height: 140,
     backgroundColor: "#FCBB2E",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
   },
-  // boxImage: {
-  //   width: 60, 
-  //   height: 100, 
-  //   resizeMode: "contain",
-  // },
   boxText: {
     fontSize: 12,
     fontWeight: "bold",
