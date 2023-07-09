@@ -1,90 +1,127 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const HomePage = () => {
+  const navigation = useNavigation();
   const handleBoxPress = (boxNumber) => {
     console.log(`Box ${boxNumber} pressed`);
-    // Add your logic for handling box press event here
+    switch (boxNumber) {
+      case 1:
+        navigation.navigate("Meditation Timer");
+        break;
+      case 5:
+        Linking.openURL("https://www.dralamountain.org/dmc-donate/");
+      default:
+        break;
+    }
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require("./assets/home-plan-your-event-background-scaled-1.jpg")} 
+      style={styles.backgroundImage}
+    >
+    <View style={styles.screen}>
       <View style={styles.gridContainer}>
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(1)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(1)}>
+          <Image source={require("./assets/timer.png")} />
           <Text style={styles.boxText}>Meditation Timer</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(2)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(2)}>
+          <Image source={require("./assets/calendar.png")} style={styles.boxImage} />
           <Text style={styles.boxText}>Calendar</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(3)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(3)}>
+          <Image source={require("./assets/videos.png")} style={styles.boxImage} />
           <Text style={styles.boxText}>Videos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(4)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(4)}>
+          <Image source={require("./assets/register.png")} style={styles.registerImage} />
           <Text style={styles.boxText}>Register</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(5)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(5)}>
+          <Image source={require("./assets/donate.png")} style={styles.boxImage} />
           <Text style={styles.boxText}>Donate</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.box}
-          onPress={() => handleBoxPress(6)}
-        >
+        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(6)}>
+          <Image source={require("./assets/meditate.png")} style={styles.meditationImage} />
           <Text style={styles.boxText}>Meditation Stats</Text>
         </TouchableOpacity>
       </View>
     </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  backgroundImage: {
     flex: 1,
-    alignItems: 'space-evenly',
-    justifyContent: 'space-evenly',
+    resizeMode: "cover",
+    justifyContent: "center",
+  },
+  screen: {
+    paddingTop: 5,
+    flex: 1,
+    justifyContent: "space-evenly",
   },
   gridContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    // marginHorizontal: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
     margin: 0,
-    width: '70%',
+    padding: 35,
+    width: "100%",
   },
   box: {
-    width: 120,
-    height: 150,
-    backgroundColor: '#FCBB2E',
+    width: 140,
+    height: 140,
+    backgroundColor: "#FCBB2E",
     borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 6,
+    borderColor: "#da990c",
+    borderWidth: 2,
+    shadowColor: "#000000",
+    shadowOpacity: 0.3,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowRadius: 4,
+  },
+  boxImage: {
+    tintColor: "white",
+    height: 110,
+    width: 110,
+  },
+  meditationImage: {
+    height: 110,
+    width: 110,
+    padding: 6,
+    justifyContent: "space-between",
+  },
+  registerImage: {
+    tintColor: "white",
+    height: 100,
+    width: 100,
+    marginBottom: 10,
+    marginTop: 5,
   },
   boxText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    fontSize: 12,
+    fontWeight: "900",
+    color: "#ffffff",
+    textAlign: "center",
   },
 });
 
