@@ -8,7 +8,7 @@ const HomePage = () => {
     console.log(`Box ${boxNumber} pressed`);
     switch (boxNumber) {
       case 1:
-        navigation.navigate("Meditation Timer");
+        navigation.navigate("20 Min Meditation Timer");
         break;
       case 5:
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
