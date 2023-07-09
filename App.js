@@ -3,7 +3,7 @@ import { StyleSheet, View, SafeAreaView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Header from './Header';
-import HomePage from './HomePage';
+import HomePage from './HomePage'
 import MeditationTimer from './MeditationTimer';
 
 const Stack = createStackNavigator()
@@ -15,7 +15,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home Page" component={HomePage} />
-          <Stack.Screen name="Meditation Timer" component={MeditationTimer} />
+          <Stack.Screen name="20 Min Meditation Timer" component={MeditationTimer} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
