@@ -34,6 +34,7 @@ const MeditationTimer = () => {
     } else {
       setTimerRunning(false);
       clearInterval(intervalRef.current);
+      console.log(duration)
     }
   };
 
