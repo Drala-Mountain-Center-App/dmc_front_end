@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 const Header = () => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerText}>Drala Mountain Center</Text>
+      <Text style={styles.headerText}> 
+        {/* <Image source={require("./assets/dralaLogoRound.png")} style={styles.image}></Image>  */}
+        Drala Mountain Center</Text>
     </View>
   );
 };
@@ -27,6 +29,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#ffffff',
   },
+  // image: {
+  //   height: 30,
+  //   width: 30,
+  // }
 });
 
 export default Header;
