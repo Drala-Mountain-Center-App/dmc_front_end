@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import Header from './Header';
-import HomePage from './HomePage'
+import HomePage from './HomePage';
 import MeditationTimer from './MeditationTimer';
 
 const Stack = createStackNavigator()

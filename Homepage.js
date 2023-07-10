@@ -26,7 +26,7 @@ const HomePage = () => {
       <View style={styles.gridContainer}>
         <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(1)}>
           <Image source={require("./assets/timer.png")} />
-          <Text style={styles.boxText}>Meditation Timer</Text>
+          <Text accessibilityLabel="box1" style={styles.boxText}>Meditation Timer</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(2)}>
