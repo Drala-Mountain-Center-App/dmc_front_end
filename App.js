@@ -16,7 +16,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home Page" component={HomePage} />
-          <Stack.Screen name="Meditation Timer" component={MeditationTimer} />
+          <Stack.Screen name="20 Min Meditation Timer" component={MeditationTimer} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
