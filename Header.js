@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation} from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
 const Header = () => {
   const navigation = useNavigation();
   const handleUserIconPress = () => {
-    navigation.navigate("AuthScreens");
+    navigation.navigate("UserLogin");
   };
 
   return (
