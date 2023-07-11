@@ -8,7 +8,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { gql, useQuery } from "@apollo/client";
 import React from 'react';
 import Header from './Header';
-import HomePage from './HomePage';
+import Homepage from './Homepage';
 import MeditationTimer from './MeditationTimer';
 
 const client = new ApolloClient({
@@ -71,7 +71,7 @@ if (error) {
         <Header />
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Home Page" component={HomePage} />
+            <Stack.Screen name="Home Page" component={Homepage} />
             <Stack.Screen
               name="20 Min Meditation Timer"
               component={MeditationTimer}
