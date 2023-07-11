@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import Header from './Header';
-import HomePage from './HomePage';
+import Homepage from './Homepage';
 import MeditationTimer from './MeditationTimer';
 
 const Stack = createStackNavigator()
@@ -15,7 +15,7 @@ export default function App() {
       <Header />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home Page" component={HomePage} />
+          <Stack.Screen name="Home Page" component={Homepage} />
           <Stack.Screen name="20 Min Meditation Timer" component={MeditationTimer} />
         </Stack.Navigator>
       </NavigationContainer>

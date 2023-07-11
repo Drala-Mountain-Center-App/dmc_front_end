@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const HomePage = () => {
+const Homepage = () => {
   const navigation = useNavigation();
   const handleBoxPress = (boxNumber) => {
     console.log(`Box ${boxNumber} pressed`);
@@ -125,4 +125,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomePage;
+export default Homepage;
