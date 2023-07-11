@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {View, TextInput, Button} from 'react-native'
 
-export const UserLogin = () => {
+const UserLogin = () => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -42,3 +42,5 @@ export const UserLogin = () => {
         </View>
     )
 }
+
+export default UserLogin;
