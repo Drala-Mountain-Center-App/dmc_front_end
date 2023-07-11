@@ -19,4 +19,5 @@ jobs:
       with:
         start: npm run web
         wait-on: 'http://localhost:19006'
-        browser: chrome
+        spec: 'cypress/e2e/*.cy.js'
+
