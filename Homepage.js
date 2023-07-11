@@ -56,6 +56,7 @@ const HomePage = () => {
         <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(6)}>
           <Image source={require("./assets/meditate.png")} style={styles.meditationImage} />
           <Text style={styles.boxText}>Meditation Stats</Text>
+          
         </TouchableOpacity>
       </View>
     </View>
