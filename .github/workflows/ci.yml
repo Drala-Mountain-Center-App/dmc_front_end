@@ -15,7 +15,7 @@ jobs:
       # and run all Cypress tests
       # https://github.com/cypress-io/github-action
     - name: Cypress run
-      uses: cypress-io/github-action@v2
+      uses: cypress-io/github-action@v5
       with:
         start: npm run web
         wait-on: 'http://localhost:19006'

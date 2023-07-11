@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "cypress": "cypress open --config-file=cypress.config.js"
   },
   "dependencies": {
     "@react-navigation/stack": "^6.3.17",
