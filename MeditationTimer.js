@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { View, Text, StyleSheet, ImageBackground, Dimensions, Animated, TouchableOpacity } from "react-native";
+import Header from "./Header";
 
 const { width, height } = Dimensions.get("window");
 const circleWidth = width / 2;
