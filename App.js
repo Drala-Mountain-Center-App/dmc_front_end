@@ -6,17 +6,45 @@ import React from 'react';
 import Header from './Header';
 import HomePage from './HomePage'
 import MeditationTimer from './MeditationTimer';
+import UserLogin from './UserLogin';
 
 const Stack = createStackNavigator()
+const AuthStack = createStackNavigator();
+
+const AuthScreens = () => {
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen name="UserLogin" component={UserLogin} />
+      {/* Add other authentication screens here */}
+    </AuthStack.Navigator>
+  );
+};
 
 export default function App() {
   return (
     <SafeAreaView style={styles.screen}>
-      <Header />
+      {/* <Header /> */}
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home Page" component={HomePage} />
-          <Stack.Screen name="20 Min Meditation Timer" component={MeditationTimer} />
+          <Stack.Screen
+            name="Home Page"
+            component={HomePage}
+            options={{
+              header: () => <Header />,
+            }}
+          />
+          {/* <Stack.Screen name="Home Page" component={HomePage} /> */}
+          <Stack.Screen
+            name="20 Min Meditation Timer"
+            component={MeditationTimer}
+          />
+          <Stack.Screen
+            name="AuthScreens"
+            component={AuthScreens}
+            options={{
+              headerShown: false,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
