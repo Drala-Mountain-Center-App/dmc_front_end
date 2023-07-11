@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const HomePage = () => {
+const Homepage = () => {
   const navigation = useNavigation();
   const handleBoxPress = (boxNumber) => {
     console.log(`Box ${boxNumber} pressed`);
@@ -26,7 +26,7 @@ const HomePage = () => {
       <View style={styles.gridContainer}>
         <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(1)}>
           <Image source={require("./assets/timer.png")} />
-          <Text style={styles.boxText}>Meditation Timer</Text>
+          <Text accessibilityLabel="box1" style={styles.boxText}>Meditation Timer</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(2)}>
@@ -126,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomePage;
+export default Homepage;
