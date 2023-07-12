@@ -10,6 +10,7 @@ import React from 'react';
 import Header from './Header';
 import Homepage from './Homepage';
 import MeditationTimer from './MeditationTimer';
+import Login from './Login';
 
 const client = new ApolloClient({
   uri: "https://drala-mountain-api-4812ef039e59.herokuapp.com/graphql",
@@ -68,10 +69,17 @@ if (error) {
     <ApolloProvider client={client}>
       {console.log(data)}
       <SafeAreaView style={styles.screen}>
-        <Header />
         <NavigationContainer>
+        <Header />
           <Stack.Navigator>
             <Stack.Screen name="Home Page" component={Homepage} />
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{
+                headerShown: true,
+              }}
+            />
             <Stack.Screen
               name="20 Min Meditation Timer"
               component={MeditationTimer}
