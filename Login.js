@@ -92,3 +92,29 @@ const UserLogin = () => {
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  loginContainer: {
+    flex: 1,
+  },
+  inputView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loginButton: {
+    marginTop: 16,
+    width: "100%",
+    height: 48,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+});
+
+export default UserLogin;
