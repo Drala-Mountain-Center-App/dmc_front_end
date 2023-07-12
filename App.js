@@ -8,8 +8,9 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { gql, useQuery } from "@apollo/client";
 import React from 'react';
 import Header from './Header';
-import HomePage from './HomePage';
+import Homepage from './Homepage';
 import MeditationTimer from './MeditationTimer';
+import Calendar from './Calendar';
 
 const client = new ApolloClient({
   uri: "https://drala-mountain-api-4812ef039e59.herokuapp.com/graphql",
@@ -18,13 +19,13 @@ const client = new ApolloClient({
 
 const GET_DATA_QUERY = gql`
   query {
-    user(id: 1) {
+    userByEmail(email: "email@email.email") {
       id
       firstName
       lastName
       email
       member
-    }
+      }
   }
 `
 
@@ -71,10 +72,14 @@ if (error) {
         <Header />
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Home Page" component={HomePage} />
+            <Stack.Screen name="Home Page" component={Homepage} />
             <Stack.Screen
               name="20 Min Meditation Timer"
               component={MeditationTimer}
+            />
+            <Stack.Screen
+              name="Calendar"
+              component={Calendar}
             />
           </Stack.Navigator>
         </NavigationContainer>

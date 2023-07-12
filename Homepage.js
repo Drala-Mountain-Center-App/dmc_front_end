@@ -2,13 +2,16 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const HomePage = () => {
+const Homepage = () => {
   const navigation = useNavigation();
   const handleBoxPress = (boxNumber) => {
     console.log(`Box ${boxNumber} pressed`);
     switch (boxNumber) {
       case 1:
         navigation.navigate("20 Min Meditation Timer");
+        break;
+      case 2:
+        navigation.navigate("Calendar");
         break;
       case 5:
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
@@ -125,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomePage;
+export default Homepage;
