@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
+
 import {
   ScrollView,
   TextInput,
@@ -12,13 +15,57 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    console.log({
-      email,
-      password,
-    });
-  };
+  const GET_USER_BY_EMAIL_QUERY = gql`
+    query GetUserByEmail($email: String!) {
+      userByEmail(email: $email) {
+        id
+        firstName
+        lastName
+        email
+        member
+      }
+    }
+  `;
 
+  const { loading, error, data } = useQuery(GET_USER_BY_EMAIL_QUERY, {
+    variables: { email },
+  });
+
+  const LOGIN_MUTATION = gql`
+    mutation SignInUser($email: String!, $password: String!) {
+      signInUser(
+        input: { credentials: { email: $email, password: $password } }
+      ) {
+        token
+        user {
+          id
+        }
+      }
+    }
+  `;
+
+  const [signInUser] = useMutation(LOGIN_MUTATION);
+
+  const handleSubmit = async () => {
+    try {
+      const response = await signInUser({
+        variables: {
+          email,
+          password,
+        },
+      });
+
+      if (response.data.signInUser) {
+        const { token, user } = response.data.signInUser;
+        console.log("Token:", token);
+        console.log("User ID:", user.id);
+
+        // Send token and user ID
+      }
+    } catch (error) {
+      console.log("Error:", error.message);
+    }
+  };
   return (
     <ScrollView style={styles.loginContainer}>
       <View style={styles.inputView}>
