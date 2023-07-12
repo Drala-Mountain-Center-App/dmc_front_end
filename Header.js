@@ -1,38 +1,60 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
+import Login from "./Login";
 
 const Header = () => {
+  const navigation = useNavigation();
+  const handleUserIconPress = () => {
+    navigation.navigate("Login");
+  };
+
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerText}> 
-        {/* <Image source={require("./assets/dralaLogoRound.png")} style={styles.image}></Image>  */}
-        Drala Mountain Center</Text>
+      <Text style={styles.headerText}>Drala Mountain Center</Text>
+      <TouchableOpacity onPress={handleUserIconPress}>
+        <Ionicons name="person" size={24} color="white" />
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: '#F5FCFF',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#52217B",
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
-    backgroundColor: '#52217B',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderBottomColor: "#E0E0E0",
     height: 60,
-    width: '100%',
+    width: "100%",
   },
   headerText: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    fontWeight: "bold",
+    color: "#ffffff",
   },
-  // image: {
-  //   height: 30,
-  //   width: 30,
-  // }
+  // headerContainer: {
+  //   backgroundColor: "#F5FCFF",
+  //   paddingVertical: 15,
+  //   paddingHorizontal: 20,
+  //   borderBottomWidth: 1,
+  //   borderBottomColor: "#E0E0E0",
+  //   backgroundColor: "#52217B",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   height: 60,
+  //   width: "100%",
+  // },
+  // headerText: {
+  //   fontSize: 20,
+  //   fontWeight: "bold",
+  //   color: "#ffffff",
+  // },
 });
 
 export default Header;
