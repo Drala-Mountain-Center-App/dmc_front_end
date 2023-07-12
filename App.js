@@ -18,7 +18,7 @@ const client = new ApolloClient({
 
 const GET_DATA_QUERY = gql`
   query {
-    user(id: 1) {
+    userByEmail(email: "email@email.email") {
       id
       firstName
       lastName
@@ -26,7 +26,7 @@ const GET_DATA_QUERY = gql`
       member
     }
   }
-`
+`;
 
 // client
 //   .query({
