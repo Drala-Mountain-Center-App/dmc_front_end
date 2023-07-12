@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 
-const UserLogin = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -117,4 +117,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserLogin;
+export default Login;
