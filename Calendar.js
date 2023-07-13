@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
     paddingVertical: 20,
-    backgroundColor: "#f6f2ed",
+    backgroundColor: "#f5f2ec",
+    color: "#3c304a",
   },
 });
 
