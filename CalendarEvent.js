@@ -1,20 +1,23 @@
 import React, { useRef, useState } from "react";
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Linking } from "react-native";
 import { Image } from "expo-image";
+
 const CalendarEvent = ({ event }) => {
   const handleEventPress = () => {
-    Linking.openURL(event.program_url)
+    Linking.openURL(event.url)
   }
 
   return (
-      <TouchableOpacity style={styles.box} onPress={() => handleEventPress()}>
-        <View style={styles.container}>
-          {/* <Text>{event.id}</Text> */}
-          <Image source={event.program_image} style={styles.image} />          
-          <Text>{event.program_name}</Text>
-          <Text>Dates: {(event.program_start_date).split(" ")[0]} - {(event.program_end_date).split(" ")[0]}</Text>
-        </View>
-      </TouchableOpacity>
+    <TouchableOpacity style={styles.box} onPress={() => handleEventPress()}>
+      <View style={styles.container}>
+        {/* <Text>{event.id}</Text> */}
+        <Image source={event.image} style={styles.image} />
+        <Text>{event.name}</Text>
+        <Text>
+          Dates: {event.startDate.split(" ")[0]} - {event.endDate.split(" ")[0]}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

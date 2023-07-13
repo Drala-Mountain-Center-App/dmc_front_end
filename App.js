@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, SafeAreaView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AppRegistry } from "react-native";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { gql, useQuery } from "@apollo/client";
 import React from 'react';
@@ -11,44 +10,13 @@ import Header from './Header';
 import Homepage from './Homepage';
 import MeditationTimer from './MeditationTimer';
 import Calendar from './Calendar';
-
-const client = new ApolloClient({
-  uri: "https://drala-mountain-api-4812ef039e59.herokuapp.com/graphql",
-  cache: new InMemoryCache(),
-});
-
-const GET_DATA_QUERY = gql`
-  query {
-    userByEmail(email: "email@email.email") {
-      id
-      firstName
-      lastName
-      email
-      member
-      }
-  }
-`
-
-// client
-//   .query({
-//     query: gql`
-//       query GetUsers{
-//         allUsers {
-//           id
-//           firstName
-//           lastName
-//           email
-//           member
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result));
+import { Get_Program_Query } from './queries';
 const Stack = createStackNavigator();
-
+import client from './apollo';
 
 export default function App() {
-   const { loading, error, data } = useQuery(GET_DATA_QUERY, { client });
+   const { loading, error, data } = useQuery(Get_Program_Query, { client });
+   console.log(data)
 if (loading) {
   return (
     <View style={styles.loadingContainer}>
@@ -67,7 +35,7 @@ if (error) {
 
   return (
     <ApolloProvider client={client}>
-      {console.log(data)}
+      {/* {console.log(data)} */}
       <SafeAreaView style={styles.screen}>
         <Header />
         <NavigationContainer>
@@ -102,4 +70,3 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 });
-// AppRegistry.registerComponent("MyApplication", () => App);
