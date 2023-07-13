@@ -10,6 +10,9 @@ const Homepage = () => {
       case 1:
         navigation.navigate("20 Min Meditation Timer");
         break;
+      case 2:
+        navigation.navigate("Calendar");
+        break;
       case 5:
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
       default:
