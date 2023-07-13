@@ -57,12 +57,13 @@ if (error) {
           <Stack.Navigator>
             <Stack.Screen name="Home Page" component={Homepage} />
             <Stack.Screen
+              testID="timer-header-twenty"
               name="20 Min Meditation Timer"
               component={MeditationTimer}
             />
           </Stack.Navigator>
         </NavigationContainer>
-        <StatusBar style="auto" />
+        <StatusBar  testID="status-bar" style="auto" />
       </SafeAreaView>
     </ApolloProvider>
   );
