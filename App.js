@@ -17,7 +17,6 @@ import VideosPage from './VideosPage';
 
 export default function App() {
    const { loading, error, data } = useQuery(Get_Program_Query, { client });
-   console.log(data)
 if (loading) {
   return (
     <View style={styles.loadingContainer}>
