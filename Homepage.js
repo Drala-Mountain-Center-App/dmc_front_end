@@ -10,12 +10,23 @@ const Homepage = () => {
       case 1:
         navigation.navigate("20 Min Meditation Timer");
         break;
+      case 2:
+        navigation.navigate("Calendar");
+        break;
+      case 3:
+        navigation.navigate("Videos");
+        break;
       case 5:
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
       default:
         break;
     }
   };
+
+    navigation.setOptions({
+      headerTintColor: "#3c304a"
+    });
+
 
   return (
     <ImageBackground
