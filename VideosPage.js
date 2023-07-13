@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet, ScrollView } from "react-native";
-import VideoPlayer from "react-native-video";
+// import VideoPlayer from "react-native-video";
 import { Get_Videos_Query } from "./queries";
 import Video from "./Video";
 import { useQuery } from "@apollo/client";
