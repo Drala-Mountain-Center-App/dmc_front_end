@@ -8,7 +8,7 @@ const CalendarEvent = ({ event }) => {
   }
 
   return (
-    <TouchableOpacity style={styles.box} onPress={() => handleEventPress()}>
+    <TouchableOpacity testID="programEvent" style={styles.box} onPress={() => handleEventPress()}>
       <View style={styles.container}>
         {/* <Text>{event.id}</Text> */}
         <Image source={event.image} style={styles.image} />

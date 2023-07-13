@@ -46,7 +46,7 @@ if (error) {
               component={MeditationTimer}
             />
             <Stack.Screen
-              name="Calendar"
+              name="Programs"
               component={Calendar}
             />
           </Stack.Navigator>
