@@ -13,6 +13,7 @@ import Calendar from './Calendar';
 import { Get_Program_Query } from './queries';
 const Stack = createStackNavigator();
 import client from './apollo';
+import VideosPage from './VideosPage';
 
 export default function App() {
    const { loading, error, data } = useQuery(Get_Program_Query, { client });
@@ -45,10 +46,8 @@ if (error) {
               name="20 Min Meditation Timer"
               component={MeditationTimer}
             />
-            <Stack.Screen
-              name="Calendar"
-              component={Calendar}
-            />
+            <Stack.Screen name="Calendar" component={Calendar} />
+            <Stack.Screen name="Videos" component={VideosPage} />
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
