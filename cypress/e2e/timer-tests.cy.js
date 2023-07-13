@@ -25,5 +25,3 @@ beforeEach(() => {
     cy.get('[data-testid="timer-home"]').should("contain", "Meditation Timer")
   })
   })
-
-  

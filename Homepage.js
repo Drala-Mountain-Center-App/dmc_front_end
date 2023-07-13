@@ -29,7 +29,7 @@ const Homepage = () => {
           <Text style={styles.boxText}>Meditation Timer</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity testID="calendar-home"style={styles.box} onPress={() => handleBoxPress(2)}>
+        <TouchableOpacity testID="calendar-home" style={styles.box} onPress={() => handleBoxPress(2)}>
           <Image source={require("./assets/calendar.png")} style={styles.boxImage} />
           <Text style={styles.boxText}>Calendar</Text>
         </TouchableOpacity>
