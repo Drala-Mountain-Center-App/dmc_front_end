@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, SafeAreaView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import { gql, useQuery } from "@apollo/client";
 import React from 'react';
 import Header from './Header';
@@ -40,7 +40,7 @@ if (error) {
         <Header />
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Home Page" component={Homepage} />
+            <Stack.Screen name="Home Page" component={Homepage} options={{headerShown: false}}/>
             <Stack.Screen
               name="20 Min Meditation Timer"
               component={MeditationTimer}

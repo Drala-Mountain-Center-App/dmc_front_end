@@ -30,7 +30,7 @@ const Homepage = () => {
 
   return (
     <ImageBackground
-      source={require("./assets/home-plan-your-event-background-scaled-1.jpg")} 
+      source={require("./assets/home-hero-scaled-1.jpg")} 
       style={styles.backgroundImage}
     >
     <View style={styles.screen}>
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   screen: {
-    paddingTop: 5,
     flex: 1,
     justifyContent: "space-evenly",
   },
@@ -93,14 +92,15 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   box: {
-    width: 140,
-    height: 140,
+    width: 130,
+    height: 130,
     backgroundColor: "#FCBB2E",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "space-between",
     padding: 6,
     borderColor: "#da990c",
+    opacity: 0.9,
     borderWidth: 2,
     shadowColor: "#000000",
     shadowOpacity: 0.3,
@@ -112,19 +112,19 @@ const styles = StyleSheet.create({
   },
   boxImage: {
     tintColor: "white",
-    height: 110,
-    width: 110,
+    height: 100,
+    width: 100,
   },
   meditationImage: {
-    height: 110,
-    width: 110,
+    height: 100,
+    width: 100,
     padding: 6,
     justifyContent: "space-between",
   },
   registerImage: {
     tintColor: "white",
-    height: 100,
-    width: 100,
+    height: 90,
+    width: 90,
     marginBottom: 10,
     marginTop: 5,
   },
