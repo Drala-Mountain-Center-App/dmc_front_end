@@ -25,18 +25,16 @@ const VideosPage = () => {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         {videos.map((video) => (
-          <VideoSingle key={video.id} event={video} />
+          <VideoSingle key={video.title} event={video} />
         ))}
       </ScrollView>
     )
 }
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    paddingVertical: 20,
     backgroundColor: "#f6f2ed",
+    height: "100%",
+    width: "100%"
   },
     
 })
