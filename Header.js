@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 const Header = () => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerText}> 
+      <Text testID="header-title"style={styles.headerText}> 
         {/* <Image source={require("./assets/dralaLogoRound.png")} style={styles.image}></Image>  */}
         Drala Mountain Center</Text>
     </View>

@@ -30,46 +30,82 @@ const Homepage = () => {
 
   return (
     <ImageBackground
-      source={require("./assets/home-plan-your-event-background-scaled-1.jpg")} 
+      source={require("./assets/home-plan-your-event-background-scaled-1.jpg")}
       style={styles.backgroundImage}
     >
-    <View style={styles.screen}>
-      <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(1)}>
-          <Image source={require("./assets/timer.png")} />
-          <Text accessibilityLabel="box1" style={styles.boxText}>Meditation Timer</Text>
-        </TouchableOpacity>
+      <View style={styles.screen}>
+        <View style={styles.gridContainer}>
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => handleBoxPress(1)}
+          >
+            <Image source={require("./assets/timer.png")} />
+            <Text accessibilityLabel="box1" style={styles.boxText}>
+              Meditation Timer
+            </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(2)}>
-          <Image source={require("./assets/calendar.png")} style={styles.boxImage} />
-          <Text style={styles.boxText}>Calendar</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => handleBoxPress(2)}
+          >
+            <Image
+              source={require("./assets/calendar.png")}
+              style={styles.boxImage}
+            />
+            <Text style={styles.boxText}>Calendar</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity
+            testID="videos-home"
+            style={styles.box}
+            onPress={() => handleBoxPress(3)}
+          >
+            <Image
+              source={require("./assets/videos.png")}
+              style={styles.boxImage}
+            />
+            <Text style={styles.boxText}>Videos</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => handleBoxPress(4)}
+          >
+            <Image
+              source={require("./assets/register.png")}
+              style={styles.registerImage}
+            />
+            <Text style={styles.boxText}>Register</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.gridContainer}>
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => handleBoxPress(5)}
+          >
+            <Image
+              source={require("./assets/donate.png")}
+              style={styles.boxImage}
+            />
+            <Text style={styles.boxText}>Donate</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => handleBoxPress(6)}
+          >
+            <Image
+              source={require("./assets/meditate.png")}
+              style={styles.meditationImage}
+            />
+            <Text style={styles.boxText}>Meditation Stats</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
-      <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(3)}>
-          <Image source={require("./assets/videos.png")} style={styles.boxImage} />
-          <Text style={styles.boxText}>Videos</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(4)}>
-          <Image source={require("./assets/register.png")} style={styles.registerImage} />
-          <Text style={styles.boxText}>Register</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(5)}>
-          <Image source={require("./assets/donate.png")} style={styles.boxImage} />
-          <Text style={styles.boxText}>Donate</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(6)}>
-          <Image source={require("./assets/meditate.png")} style={styles.meditationImage} />
-          <Text style={styles.boxText}>Meditation Stats</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
     </ImageBackground>
   );
 };
