@@ -5,10 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 const Homepage = () => {
   const navigation = useNavigation();
   const handleBoxPress = (boxNumber) => {
-    console.log(`Box ${boxNumber} pressed`);
     switch (boxNumber) {
       case 1:
         navigation.navigate("20 Min Meditation Timer");
+        break;
+      case 2:
+        navigation.navigate("Programs");
         break;
       case 5:
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
@@ -29,9 +31,9 @@ const Homepage = () => {
           <Text style={styles.boxText}>Meditation Timer</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity testID="calendar-home" style={styles.box} onPress={() => handleBoxPress(2)}>
+        <TouchableOpacity testID="programs" style={styles.box} onPress={() => handleBoxPress(2)}>
           <Image source={require("./assets/calendar.png")} style={styles.boxImage} />
-          <Text style={styles.boxText}>Calendar</Text>
+          <Text style={styles.boxText}>Programs</Text>
         </TouchableOpacity>
       </View>
 
