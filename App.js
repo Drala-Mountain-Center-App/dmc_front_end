@@ -12,6 +12,7 @@ import Calendar from './Calendar';
 import { Get_Program_Query } from './queries';
 import client from './apollo';
 import VideosPage from './VideosPage.js'
+import Login from './Login';
 
 const Stack = createStackNavigator();
 
@@ -36,10 +37,21 @@ if (error) {
   return (
     <ApolloProvider client={client}>
       <SafeAreaView style={styles.screen}>
-        <Header />
         <NavigationContainer>
+        <Header />
           <Stack.Navigator>
-            <Stack.Screen name="Home Page" component={Homepage} options={{headerShown: false}}/>
+            <Stack.Screen
+              name="Home Page"
+              component={Homepage}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{
+                headerShown: true,
+              }}
+            />
             <Stack.Screen
               testID="timer-header-twenty"
               name="20 Min Meditation Timer"
@@ -49,7 +61,7 @@ if (error) {
             <Stack.Screen name="Videos" component={VideosPage} />
           </Stack.Navigator>
         </NavigationContainer>
-        <StatusBar  testID="status-bar" style="auto" />
+        <StatusBar testID="status-bar" style="auto" />
       </SafeAreaView>
     </ApolloProvider>
   );

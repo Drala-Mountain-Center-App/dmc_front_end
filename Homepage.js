@@ -19,6 +19,9 @@ const Homepage = () => {
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
       default:
         break;
+      case 7:
+        navigation.navigate("Login")
+        break;
     }
   };
 
