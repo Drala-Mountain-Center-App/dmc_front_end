@@ -85,7 +85,7 @@ const MeditationTimer = () => {
   });
 
   return (
-    <ImageBackground source={require("./assets/home-temple.jpg")} style={styles.backgroundImage}>
+    <ImageBackground testID="timer-background" source={require("./assets/home-temple.jpg")} style={styles.backgroundImage}>
       <View style={styles.container}>
         {[0, 1, 2, 3, 4, 5, 6, 7].map((item) => {
           const rotation = move.interpolate({
@@ -94,6 +94,7 @@ const MeditationTimer = () => {
           });
           return (
             <Animated.View
+              testID="breath-animation"
               key={item}
               style={{
                 opacity: 0.1,
@@ -122,7 +123,7 @@ const MeditationTimer = () => {
             justifyContent: "center",
           }}
         >
-          <TouchableOpacity onPress={handleButtonPress}>
+          <TouchableOpacity testID="press" onPress={handleButtonPress}>
             <Text
               style={{
                 fontSize: 25,

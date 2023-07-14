@@ -18,31 +18,15 @@ const client = new ApolloClient({
 
 const GET_DATA_QUERY = gql`
   query {
-    user(id: 1) {
+    userByEmail(email: "email@email.email") {
       id
       firstName
       lastName
       email
       member
-    }
+      }
   }
 `
-
-// client
-//   .query({
-//     query: gql`
-//       query GetUsers{
-//         allUsers {
-//           id
-//           firstName
-//           lastName
-//           email
-//           member
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result));
 const Stack = createStackNavigator();
 
 
@@ -73,12 +57,13 @@ if (error) {
           <Stack.Navigator>
             <Stack.Screen name="Home Page" component={Homepage} />
             <Stack.Screen
+              testID="timer-header-twenty"
               name="20 Min Meditation Timer"
               component={MeditationTimer}
             />
           </Stack.Navigator>
         </NavigationContainer>
-        <StatusBar style="auto" />
+        <StatusBar  testID="status-bar" style="auto" />
       </SafeAreaView>
     </ApolloProvider>
   );
