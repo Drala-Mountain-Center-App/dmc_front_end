@@ -15,6 +15,9 @@ const Homepage = () => {
       case 3:
         navigation.navigate("Videos");
         break;
+      case 4:
+        navigation.navigate("Gallery");
+        break;
       case 5:
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
       default:

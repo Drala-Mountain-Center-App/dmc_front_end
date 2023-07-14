@@ -12,6 +12,7 @@ import Calendar from './Calendar';
 import { Get_Program_Query } from './queries';
 import client from './apollo';
 import VideosPage from './VideosPage.js'
+import Gallery from './Gallery'
 
 const Stack = createStackNavigator();
 
@@ -47,6 +48,7 @@ if (error) {
             />
             <Stack.Screen name="Programs" component={Calendar} />
             <Stack.Screen name="Videos" component={VideosPage} />
+             <Stack.Screen name="Gallery" component={Gallery} />
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar  testID="status-bar" style="auto" />
