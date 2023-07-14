@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet, ScrollView } from "react-native";
-import { Get_Videos_Query } from "./queries";
+import { Get_Videos_Query } from "../queries";
 import VideoSingle from "./VideoSingle";
 import { useQuery } from "@apollo/client";
-import client from "./apollo";
+import client from "../apollo";
 
 const VideosPage = () => {
     const { loading, error, data } = useQuery(Get_Videos_Query, { client });

@@ -85,7 +85,7 @@ const MeditationTimer = () => {
   });
 
   return (
-    <ImageBackground testID="timer-background" source={require("./assets/home-temple.jpg")} style={styles.backgroundImage}>
+    <ImageBackground testID="timer-background" source={require("../../assets/home-temple.jpg")} style={styles.backgroundImage}>
       <View style={styles.container}>
         {[0, 1, 2, 3, 4, 5, 6, 7].map((item) => {
           const rotation = move.interpolate({

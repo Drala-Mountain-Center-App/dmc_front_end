@@ -5,12 +5,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { ApolloProvider } from "@apollo/client";
 import { useQuery } from "@apollo/client";
 import React, {useState} from 'react';
-import Header from './Header';
+import Header from './Header'
 import Homepage from './Homepage';
 import MeditationTimer from './MeditationTimer';
 import Calendar from './Calendar';
-import { Get_Program_Query } from './queries';
-import client from './apollo';
+import { Get_Program_Query } from '../queries';
+import client from '../apollo';
 import VideosPage from './VideosPage.js'
 import Login from './Login';
 import MeditationStats from './MeditationStats';
