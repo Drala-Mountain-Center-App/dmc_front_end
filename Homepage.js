@@ -5,10 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 const Homepage = () => {
   const navigation = useNavigation();
   const handleBoxPress = (boxNumber) => {
-    console.log(`Box ${boxNumber} pressed`);
     switch (boxNumber) {
       case 1:
         navigation.navigate("20 Min Meditation Timer");
+        break;
+      case 2:
+        navigation.navigate("Programs");
         break;
       case 5:
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
@@ -24,36 +26,36 @@ const Homepage = () => {
     >
     <View style={styles.screen}>
       <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(1)}>
+        <TouchableOpacity testID="timer-home" style={styles.box} onPress={() => handleBoxPress(1)}>
           <Image source={require("./assets/timer.png")} />
-          <Text accessibilityLabel="box1" style={styles.boxText}>Meditation Timer</Text>
+          <Text style={styles.boxText}>Meditation Timer</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(2)}>
+        <TouchableOpacity testID="programs" style={styles.box} onPress={() => handleBoxPress(2)}>
           <Image source={require("./assets/calendar.png")} style={styles.boxImage} />
-          <Text style={styles.boxText}>Calendar</Text>
+          <Text style={styles.boxText}>Programs</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(3)}>
+        <TouchableOpacity testID="videos-home"style={styles.box} onPress={() => handleBoxPress(3)}>
           <Image source={require("./assets/videos.png")} style={styles.boxImage} />
           <Text style={styles.boxText}>Videos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(4)}>
+        <TouchableOpacity testID="gallery-home"style={styles.box} onPress={() => handleBoxPress(4)}>
           <Image source={require("./assets/register.png")} style={styles.registerImage} />
-          <Text style={styles.boxText}>Register</Text>
+          <Text style={styles.boxText}>Gallery</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(5)}>
+        <TouchableOpacity testID="donate-home" style={styles.box} onPress={() => handleBoxPress(5)}>
           <Image source={require("./assets/donate.png")} style={styles.boxImage} />
           <Text style={styles.boxText}>Donate</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.box} onPress={() => handleBoxPress(6)}>
+        <TouchableOpacity testID="stats-home" style={styles.box} onPress={() => handleBoxPress(6)}>
           <Image source={require("./assets/meditate.png")} style={styles.meditationImage} />
           <Text style={styles.boxText}>Meditation Stats</Text>
         </TouchableOpacity>
