@@ -13,21 +13,21 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: "#655972",
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
-    backgroundColor: '#52217B',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderBottomColor: "#E0E0E0",
+    backgroundColor: "#655972",
+    alignItems: "center",
+    justifyContent: "center",
     height: 60,
-    width: '100%',
+    width: "100%",
   },
   headerText: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    fontWeight: "bold",
+    color: "#ffffff",
   },
   // image: {
   //   height: 30,

@@ -28,3 +28,17 @@ export const Get_Program_Query = gql`
     }
   }
 `;
+
+export const Get_Videos_Query = gql`
+  query {
+    allVideos {
+      title
+      speaker
+      topic
+      length
+      dateRecorded
+      videoUrl
+      embedCode
+    }
+  }
+`;
