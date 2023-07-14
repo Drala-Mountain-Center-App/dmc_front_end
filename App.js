@@ -11,6 +11,7 @@ import MeditationTimer from './MeditationTimer';
 import Calendar from './Calendar';
 import { Get_Program_Query } from './queries';
 import client from './apollo';
+import VideosPage from './VideosPage.js'
 
 const Stack = createStackNavigator();
 
