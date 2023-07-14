@@ -16,7 +16,6 @@ const Stack = createStackNavigator();
 
 export default function App() {
    const { loading, error, data } = useQuery(Get_Program_Query, { client });
-   console.log(data)
 if (loading) {
   return (
     <View style={styles.loadingContainer}>
@@ -39,7 +38,7 @@ if (error) {
         <Header />
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Home Page" component={Homepage} />
+            <Stack.Screen name="Home Page" component={Homepage} options={{headerShown: false}}/>
             <Stack.Screen
               testID="timer-header-twenty"
               name="20 Min Meditation Timer"
