@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
-  ImageBackground,
   TouchableOpacity,
   Linking,
 } from "react-native";
@@ -21,9 +20,8 @@ const CalendarEvent = ({ event }) => {
   };
 
   return (
-    <TouchableOpacity style={styles.box} onPress={handleEventPress}>
+    <TouchableOpacity testID="programEvent" style={styles.box} onPress={() => handleEventPress()}>
       <View style={styles.container}>
-        {/* <Text>{event.id}</Text> */}
         <Image source={event.image} style={styles.image} />
         <Text style={styles.name}>{event.name}</Text>
         <Text style={styles.date}>
