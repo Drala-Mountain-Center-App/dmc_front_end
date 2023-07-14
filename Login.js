@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { useQuery, gql } from "@apollo/client";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Get_User_Email_Query = gql`
   query GetUserByEmail($email: String!) {
@@ -21,9 +22,19 @@ const Get_User_Email_Query = gql`
   }
 `;
 
+const storeData = async (value) => {
+  try {    
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem("userInfo", jsonValue);
+  } catch (e) {
+    // saving error
+  }
+};
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [userInfo, setUserInfo] = useState({})
   const { loading, error, data } = useQuery(Get_User_Email_Query, {
     variables: { email },
   });
@@ -31,6 +42,8 @@ const Login = () => {
   const handleSubmit = () => {
     if (data && data.userByEmail) {
       console.log("User logged in:", data.userByEmail);
+      storeData(data.userByEmail)
+      // console.log(userInfo, "UI line 36 login")
     } else {
       console.log("Email not found");
     }

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ApolloProvider } from "@apollo/client";
 import { useQuery } from "@apollo/client";
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './Header';
 import Homepage from './Homepage';
 import MeditationTimer from './MeditationTimer';
@@ -13,11 +13,13 @@ import { Get_Program_Query } from './queries';
 import client from './apollo';
 import VideosPage from './VideosPage.js'
 import Login from './Login';
+import MeditationStats from './MeditationStats';
 
 const Stack = createStackNavigator();
 
 export default function App() {
    const { loading, error, data } = useQuery(Get_Program_Query, { client });
+
 if (loading) {
   return (
     <View style={styles.loadingContainer}>
@@ -59,6 +61,7 @@ if (error) {
             />
             <Stack.Screen name="Programs" component={Calendar} />
             <Stack.Screen name="Videos" component={VideosPage} />
+            <Stack.Screen name="Meditation Stats" component={MeditationStats} />
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar testID="status-bar" style="auto" />
