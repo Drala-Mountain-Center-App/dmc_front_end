@@ -9,17 +9,22 @@ import {
 } from "react-native";
 import { useQuery, gql } from "@apollo/client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+
 
 const Get_User_Email_Query = gql`
-  query GetUserByEmail($email: String!) {
-    userByEmail(email: $email) {
-      id
-      firstName
-      lastName
-      email
-      member
-    }
+query GetUserByEmail($email: String!) {
+  userByEmail(email: $email) {
+    id
+    firstName
+    lastName
+    email
+    member
+    totalMeditations
+    totalMeditationTime
+    averageMeditationTime
   }
+}
 `;
 
 const storeData = async (value) => {
@@ -38,11 +43,13 @@ const Login = () => {
   const { loading, error, data } = useQuery(Get_User_Email_Query, {
     variables: { email },
   });
-
+  const navigation = useNavigation();
+  
   const handleSubmit = () => {
     if (data && data.userByEmail) {
       console.log("User logged in:", data.userByEmail);
       storeData(data.userByEmail)
+      navigation.navigate("Home Page")
       // console.log(userInfo, "UI line 36 login")
     } else {
       console.log("Email not found");

@@ -39,7 +39,11 @@ const MeditationStats = () => {
 
   return (
     <View style={styles.container}>
-      <Text>{userInfo.firstName}</Text>
+      {console.log(userInfo)}
+      <Text>{userInfo.firstName} Meditation Stats:</Text>
+      <Text>Total Meditations:{userInfo.totalMeditations}</Text>
+      <Text>Total Time Spent Meditating:{userInfo.totalMeditationTime}</Text>
+      <Text>Average Time Spent Meditating:{userInfo.averageMeditationTime}</Text>
     </View>
   );
 };
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: "center",
-    justifyContent: "space-evenly",
+    // justifyContent: "space-evenly",
     paddingVertical: 20,
     backgroundColor: "#f5f2ec",
     color: "#3c304a",
