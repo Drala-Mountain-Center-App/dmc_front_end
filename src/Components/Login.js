@@ -36,7 +36,7 @@ const storeData = async (value) => {
   }
 };
 
-const Login = () => {
+const Login = ({isLoggedIn}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [userInfo, setUserInfo] = useState({})
@@ -47,17 +47,23 @@ const Login = () => {
 
   const navigation = useNavigation();
   
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (data && data.userByEmail) {
       console.log("User logged in:", data.userByEmail);
-      storeData(data.userByEmail)
+      await storeData(data.userByEmail)
       navigation.navigate("Home Page")
       setEmail("")
       setErrorMessage("")
+      isLoggedIn(true)
       // console.log(userInfo, "UI line 36 login")
     } else {
       setErrorMessage("Sorry, please try again! Can't find that email.");
     }
+  };
+
+  const handleLogoutButtonPress = async () => {
+    await AsyncStorage.removeItem("userInfo");
+    navigation.navigate("Login");
   };
 
   return (
