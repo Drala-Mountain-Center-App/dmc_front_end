@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useQuery } from "@apollo/client";
+import { Get_User_Email_Query } from "../queries";
 
 const getData = async () => {
   try {
@@ -16,18 +14,43 @@ const getData = async () => {
 };
 
 const MeditationStats = () => {
-  const [userInfo, setUserInfo] = useState(null);
+  const [userEmail, setUserEmail] = useState("");
+  const { loading, error, data: meditationStats, refetch } = useQuery(Get_User_Email_Query, {
+    variables: { email: userEmail },
+  });
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       const data = await getData();
-      setUserInfo(data);
+      setUserEmail(data.email);
+      console.log(data.email, "line 26");
+      console.log(userEmail, "line 27");
     };
 
     fetchUserInfo();
   }, []);
 
-  if (!userInfo) {
+  useEffect(() => {
+    refetch();
+  }, [userEmail]);
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
+
+  if (!userEmail || !meditationStats) {
     return (
       <View style={styles.loadingContainer}>
         <Text>Loading...</Text>
@@ -37,11 +60,11 @@ const MeditationStats = () => {
 
   return (
     <View style={styles.container}>
-      {console.log(userInfo)}
-      <Text>{userInfo.firstName} Meditation Stats:</Text>
-      <Text>Total Meditations:{userInfo.totalMeditations}</Text>
-      <Text>Total Time Spent Meditating:{userInfo.totalMeditationTime}</Text>
-      <Text>Average Time Spent Meditating:{userInfo.averageMeditationTime}</Text>
+      {console.log(meditationStats)}
+      <Text>{meditationStats.userByEmail.firstName} Meditation Stats:</Text>
+      <Text>Total Meditations: {meditationStats.userByEmail.totalMeditations}</Text>
+      <Text>Total Time Spent Meditating: {meditationStats.userByEmail.totalMeditationTime}</Text>
+      <Text>Average Time Spent Meditating: {meditationStats.userByEmail.averageMeditationTime}</Text>
     </View>
   );
 };
