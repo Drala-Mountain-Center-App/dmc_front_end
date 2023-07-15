@@ -4,19 +4,22 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ApolloProvider } from "@apollo/client";
 import { useQuery } from "@apollo/client";
-import React from 'react';
-import Header from './Header';
+import React, {useState} from 'react';
+import Header from './Header'
 import Homepage from './Homepage';
 import MeditationTimer from './MeditationTimer';
 import Calendar from './Calendar';
-import { Get_Program_Query } from './queries';
-import client from './apollo';
+import { Get_Program_Query } from '../queries';
+import client from '../apollo';
 import VideosPage from './VideosPage.js'
+import Login from './Login';
+import MeditationStats from './MeditationStats';
 
 const Stack = createStackNavigator();
 
 export default function App() {
    const { loading, error, data } = useQuery(Get_Program_Query, { client });
+
 if (loading) {
   return (
     <View style={styles.loadingContainer}>
@@ -36,10 +39,21 @@ if (error) {
   return (
     <ApolloProvider client={client}>
       <SafeAreaView style={styles.screen}>
-        <Header />
         <NavigationContainer>
+        <Header />
           <Stack.Navigator>
-            <Stack.Screen name="Home Page" component={Homepage} options={{headerShown: false}}/>
+            <Stack.Screen
+              name="Home Page"
+              component={Homepage}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{
+                headerShown: true,
+              }}
+            />
             <Stack.Screen
               testID="timer-header-twenty"
               name="20 Min Meditation Timer"
@@ -47,9 +61,10 @@ if (error) {
             />
             <Stack.Screen name="Programs" component={Calendar} />
             <Stack.Screen name="Videos" component={VideosPage} />
+            <Stack.Screen name="Meditation Stats" component={MeditationStats} />
           </Stack.Navigator>
         </NavigationContainer>
-        <StatusBar  testID="status-bar" style="auto" />
+        <StatusBar testID="status-bar" style="auto" />
       </SafeAreaView>
     </ApolloProvider>
   );
