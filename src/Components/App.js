@@ -62,9 +62,7 @@ if (error) {
             />
             <Stack.Screen name="Programs" component={Calendar} />
             <Stack.Screen name="Videos" component={VideosPage} />
-
              <Stack.Screen name="Gallery" component={Gallery} />
-
             <Stack.Screen name="Meditation Stats" component={MeditationStats} />
 
           </Stack.Navigator>

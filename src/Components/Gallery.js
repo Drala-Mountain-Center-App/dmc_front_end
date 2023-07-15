@@ -1,29 +1,45 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { ScrollView, Text, StyleSheet, Image } from 'react-native';
+
 
 const Gallery = () => {
 
+const imagePaths = [
+  require("../../assets/Drala-photos/grass.jpg"), 
+  require("../../assets/Drala-photos/rainbow.jpg"), 
+  require("../../assets/Drala-photos/zen.jpg"),
+  require("../../assets/Drala-photos/road-home.jpg"),
+  require("../../assets/Drala-photos/stone.jpg"),
+  require("../../assets/Drala-photos/storm.jpg"),
+  require("../../assets/Drala-photos/sunset1.jpg"),
+  require("../../assets/Drala-photos/sunset2.jpg"),
+  ]
 
  return (
-    <View style={styles.container}>
-        {/* <StatusBar style="auto" /> */}
-        <Text>Photo Gallery</Text> 
-        <Image
-          style={{ width: 200, height: 200, marginBottom: 15 }}
-          source={require('./assets/Drala-photos/PXL_20201007_173427746.MP.jpg')}
-        /> 
-    </View> 
+    <ScrollView contentContainerStyle={styles.container}>
+        {imagePaths.map(image => {
+           return (<Image
+          key={image} 
+          style={ styles.image }
+          source={image}
+        />) 
+        })}   
+    </ScrollView> 
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f6f2ed",
-    height: "100%",
-    width: "100%"
+    flexGrow: 1, 
+    alignItems: "center",
+    justifyContent: "center"
   },
+  image: {
+    width: "90%", 
+    height: 200, 
+    marginBottom: 15
+  }
   }) 
 
 export default Gallery;
