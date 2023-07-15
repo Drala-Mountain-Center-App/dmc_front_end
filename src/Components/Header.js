@@ -15,7 +15,7 @@ const Header = () => {
         Drala Mountain Center
       </Text>
       <TouchableOpacity onPress={handleUserIconPress}>
-        <Ionicons name="person" size={24} color="white" />
+        <Ionicons name="person" size={28} color="white" />
       </TouchableOpacity>
     </View>
   );

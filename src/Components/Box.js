@@ -5,7 +5,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
- 
+const iconSize = windowWidth > 400 ? 100 : 80;  
+
+
 const Box = ({ iconName, text, onPress, image, imageStyle }) => {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -22,8 +24,9 @@ const Box = ({ iconName, text, onPress, image, imageStyle }) => {
       style={[styles.box, isPressed ? styles.boxPressed : null]}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      onPress={onPress}
     >
-      <Ionicons name={iconName} size={80} color="white" />
+      <Ionicons name={iconName} size={iconSize} color="#ffffff" />
       <View style={styles.boxTextContainer}>
         <Text style={styles.boxText}>{text}</Text>
       </View>
@@ -62,11 +65,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6,  
     shadowOpacity: 0.8,
   },
-  boxImage: {
-    tintColor: "white",
-    height: windowHeight/ 10.5,
-    width: windowWidth/ 5,
-  },
   meditationImage: {
     height: windowHeight/ 11.5,
     width: windowWidth/ 5.5,
@@ -79,8 +77,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   boxText: {
-    fontSize: 15,
-    fontWeight: "900",
+    fontSize: 16,
+    fontWeight: "400",
     color: "#ffffff",
     textAlign: "center",
     

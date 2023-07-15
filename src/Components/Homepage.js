@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Pressable,TouchableOpacity, StyleSheet, Image, Linking, ImageBackground, Dimensions } from 'react-native';
+import { View, Text, Pressable, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
@@ -14,13 +14,10 @@ const getData = async () => {
   }
 };
 
-
 const Homepage = () => {
   const navigation = useNavigation();
   const [userInfo, setUserInfo] = useState(null);
   
-
-
   useEffect(() => {
     const fetchUserInfo = async () => {
       const data = await getData();
@@ -111,72 +108,6 @@ const Homepage = () => {
             onPress={() => handleBoxPress(6)}
           />
         </View>
-
-        {/* <Box 
-        style={[styles.box, isPressed ? styles.boxPressed : null]} 
-        onPressIn={handlePressIn} 
-        onPressOut={handlePressOut}
-        testID="programs" 
-        onPress={() => handleBoxPress(2)}>
-          <Ionicons name="calendar-outline" size={80} color="white" />
-          <View style={styles.boxTextContainer}>
-            <Text style={styles.boxText}>Program Calendar</Text>
-          </View>
-        </Pressable>
-      </View>
-
-      <View style={styles.gridContainer}>
-        <Pressable 
-        style={[styles.box, isPressed ? styles.boxPressed : null]} 
-        onPressIn={handlePressIn} 
-        onPressOut={handlePressOut}
-        testID="videos-home"
-        onPress={() => handleBoxPress(3)}>
-          <Ionicons name="videocam-outline" size={80} color="white" />
-          <View style={styles.boxTextContainer}>
-            <Text style={styles.boxText}>Teaching Videos</Text>
-          </View>
-        </Pressable>
-
-        <Pressable 
-        style={[styles.box, isPressed ? styles.boxPressed : null]} 
-        onPressIn={handlePressIn} 
-        onPressOut={handlePressOut}
-        testID="gallery-home"
-        onPress={() => handleBoxPress(4)}>
-          <Ionicons name="images-outline" size={80} color="white" />
-          <View style={styles.boxTextContainer}>
-            <Text style={styles.boxText}>Photo  Gallery</Text>
-          </View>
-        </Pressable>
-      </View>
-
-      <View style={styles.gridContainer}>
-        <Pressable 
-        style={[styles.box, isPressed ? styles.boxPressed : null]} 
-        onPressIn={handlePressIn} 
-        onPressOut={handlePressOut}
-        testID="donate-home" 
-        onPress={() => handleBoxPress(5)}>
-          <Image source={require("../../assets/donate.png")} style={styles.boxImage} />
-          <View style={styles.boxTextContainer}>
-            <Text style={styles.boxText}>Donate to DMC</Text>
-          </View>
-        </Pressable>
-
-        <Pressable 
-        style={[styles.box, isPressed ? styles.boxPressed : null]} 
-        onPressIn={handlePressIn} 
-        onPressOut={handlePressOut}
-        testID="stats-home" 
-        onPress={() => handleBoxPress(6)}>
-          <Image source={require("../../assets/meditate.png")} style={styles.meditationImage} />
-           <View style={styles.boxTextContainer}>
-            <Text style={styles.boxText}>Meditation Stats</Text>
-          </View>
-        </Pressable>
-      </View> */
-}
     </View>
     </ImageBackground>
   );
@@ -199,7 +130,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: 'space-between',
     margin: 0,
-    marginTop: 60,
+    marginTop: "25%",
     padding: 0,
     width: "90%",
     alignSelf: "center"
@@ -211,7 +142,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginBottom: 20,
     fontSize: 18,
-    color: "#383240"
+    color: "#383240",
   }
 });
 
