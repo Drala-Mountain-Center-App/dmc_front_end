@@ -1,9 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground, ScrollView } from "react-native";
 import CalendarEvent from "./CalendarEvent";
-import events from "./cypress/fixtures/event-examples";
-import client from "./apollo";
-import { Get_Program_Query } from "./queries";
+import client from "../apollo";
+import { Get_Program_Query } from "../queries";
 import { useQuery } from "@apollo/client";
 
 const Calendar = () => {

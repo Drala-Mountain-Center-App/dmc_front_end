@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const Get_Email_QUERY = gql`
   query {
-    userByEmail(email: "email@email.email") {
+    userByEmail(email: "email@email") {
       id
       firstName
       lastName

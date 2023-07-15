@@ -25,14 +25,20 @@ const VideoSingle = ({ event }) => {
           html: event.embedCode,
         }}
       />
-      <View style={styles.infoContainer}>
-        <Text style={styles.title}>{event.title}</Text>        
-        <Text style={styles.speaker}>{event.speaker}</Text>
-        <Text style={styles.topic}>{event.topic}</Text>
-        <Text style={styles.dateRecorded}>
+      <View style={styles.infoContainer} testID="info-container">
+        <Text style={styles.title} testID="event-title">
+          {event.title}{" "}
+        </Text>
+        <Text style={styles.speaker} testID="event-speaker">
+          {event.speaker}
+        </Text>
+        <Text style={styles.topic} testID="event-topic">
+          {event.topic}
+        </Text>
+        <Text style={styles.dateRecorded} testID="event-date-recorded">
           Date Recorded: {formatDateString(event.dateRecorded)}
         </Text>
-       </View>
+      </View>
     </>
   );
 };
