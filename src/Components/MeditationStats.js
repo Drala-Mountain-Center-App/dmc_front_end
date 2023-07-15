@@ -3,8 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  ImageBackground,
-  ScrollView,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -52,7 +50,6 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: "center",
-    // justifyContent: "space-evenly",
     paddingVertical: 20,
     backgroundColor: "#f5f2ec",
     color: "#3c304a",
