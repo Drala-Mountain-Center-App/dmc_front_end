@@ -5,16 +5,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { ApolloProvider } from "@apollo/client";
 import { useQuery } from "@apollo/client";
 import React, {useState} from 'react';
-import Header from './src/Components/Header'
-import Homepage from './src/Components/Homepage';
-import MeditationTimer from './src/Components/MeditationTimer';
-import Calendar from './src/Components/Calendar';
-import { Get_Program_Query } from './src/queries';
-import client from './src/apollo';
-import VideosPage from './src/Components/VideosPage.js'
-import Gallery from './src/Components/Gallery'
-import Login from './src/Components/Login';
-import MeditationStats from './src/Components/MeditationStats';
+import Header from './Header'
+import Homepage from './Homepage';
+import MeditationTimer from './MeditationTimer';
+import Calendar from './Calendar';
+import { Get_Program_Query } from '../queries';
+import client from '../apollo';
+import VideosPage from './VideosPage.js'
+import Gallery from './Gallery'
+import Login from './Login';
+import MeditationStats from './MeditationStats';
+import { Ionicons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 
@@ -75,12 +76,12 @@ if (error) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: "#EAE2FA",
+    backgroundColor: "#F1F1F1",
     flex: 1,
   },
   container: {
     flex: 1,
-    backgroundColor: "#EAE2FA",
+    backgroundColor: "#F1F1F1",
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
