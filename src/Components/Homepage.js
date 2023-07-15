@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
 
 const getData = async () => {
   try {
@@ -11,6 +12,9 @@ const getData = async () => {
     // error reading value
   }
 };
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const Homepage = () => {
   const navigation = useNavigation();
@@ -35,6 +39,9 @@ const Homepage = () => {
         break;
       case 3:
         navigation.navigate("Videos");
+        break;
+      case 4:
+        navigation.navigate("Gallery");
         break;
       case 5:
         Linking.openURL("https://www.dralamountain.org/dmc-donate/");
@@ -62,32 +69,32 @@ const Homepage = () => {
       {userInfo && <Text style={styles.welcomeHeader}>Welcome, {userInfo.firstName}!</Text>}
       <View style={styles.gridContainer}>
         <TouchableOpacity testID="timer-home" style={styles.box} onPress={() => handleBoxPress(1)}>
-          <Image source={require("../../assets/timer.png")} />
+          <Ionicons name="timer-outline" size={80} color="white" />
           <Text style={styles.boxText}>Meditation Timer</Text>
         </TouchableOpacity>
 
         <TouchableOpacity testID="programs" style={styles.box} onPress={() => handleBoxPress(2)}>
-          <Image source={require("../../assets/calendar.png")} style={styles.boxImage} />
-          <Text style={styles.boxText}>Programs</Text>
+          <Ionicons name="calendar-outline" size={80} color="white" />
+          <Text style={styles.boxText}>Program Calendar</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
         <TouchableOpacity testID="videos-home"style={styles.box} onPress={() => handleBoxPress(3)}>
-          <Image source={require("../../assets/videos.png")} style={styles.boxImage} />
-          <Text style={styles.boxText}>Videos</Text>
+          <Ionicons name="videocam-outline" size={80} color="white" />
+          <Text style={styles.boxText}>Teaching Videos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity testID="gallery-home"style={styles.box} onPress={() => handleBoxPress(4)}>
-          <Image source={require("../../assets/register.png")} style={styles.registerImage} />
-          <Text style={styles.boxText}>Gallery</Text>
+          <Ionicons name="images-outline" size={80} color="white" />
+          <Text style={styles.boxText}>Photo  Gallery</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.gridContainer}>
         <TouchableOpacity testID="donate-home" style={styles.box} onPress={() => handleBoxPress(5)}>
           <Image source={require("../../assets/donate.png")} style={styles.boxImage} />
-          <Text style={styles.boxText}>Donate</Text>
+          <Text style={styles.boxText}>Donate to DMC</Text>
         </TouchableOpacity>
 
         <TouchableOpacity testID="stats-home" style={styles.box} onPress={() => handleBoxPress(6)}>
@@ -112,39 +119,44 @@ const styles = StyleSheet.create({
   },
   gridContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    margin: 0,
-    padding: 35,
+    alignItems: "center",
+    justifyContent: 'space-around',
+    margin: 1,
+    marginBottom: 10,
+    padding: 1,
     width: "100%",
   },
   box: {
-    width: 130,
-    height: 130,
-    backgroundColor: "#FCBB2E",
+    flexGrow: 1,
+    width: windowWidth / 4,
+    height: windowHeight / 6,
+    backgroundColor: "#F2AE30",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 6,
+    padding: 10,
+    marginHorizontal: 20,
+    marginVertical: 15, 
     borderColor: "#da990c",
-    opacity: 0.9,
+    opacity: 1,
     borderWidth: 2,
     shadowColor: "#000000",
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.5,
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 8,
     },
     shadowRadius: 4,
   },
   boxImage: {
     tintColor: "white",
-    height: 100,
-    width: 100,
+    height: 90,
+    width: 90,
   },
   meditationImage: {
-    height: 100,
-    width: 100,
-    padding: 6,
+    height: 85,
+    width: 85,
+    padding: 7,
     justifyContent: "space-between",
   },
   registerImage: {
@@ -155,15 +167,17 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   boxText: {
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: "900",
     color: "#ffffff",
     textAlign: "center",
   },
   welcomeHeader: {
-    backgroundColor: "#FCBB2E",
-    margin: 0,
-    padding: 0,
+    margin: 1,
+    padding: 5,
+    paddingLeft: 20,
+   
+    
   }
 });
 
