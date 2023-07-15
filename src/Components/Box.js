@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
       width: 1,
       height: 1,
     },
-    shadowRadius: 2,
+    shadowRadius: 4,
   },
+
   boxPressed: {
     backgroundColor: '#383250',
     shadowColor: '#fffff4',  
@@ -65,17 +66,11 @@ const styles = StyleSheet.create({
     shadowRadius: 6,  
     shadowOpacity: 0.8,
   },
-  meditationImage: {
-    height: windowHeight/ 11.5,
-    width: windowWidth/ 5.5,
-    padding: 4,
-    paddingBottom: 5,
-    justifyContent: "space-between",
-  },
   
   boxTextContainer: {
     justifyContent: 'flex-end',
   },
+
   boxText: {
     fontSize: 16,
     fontWeight: "400",

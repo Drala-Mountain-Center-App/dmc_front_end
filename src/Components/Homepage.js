@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: 'space-between',
     margin: 0,
-    marginTop: "25%",
+    marginTop: "30%",
     padding: 0,
     width: "90%",
     alignSelf: "center"
