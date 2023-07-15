@@ -5,17 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 const Gallery = () => {
 
 
-
-
  return (
     <View style={styles.container}>
         {/* <StatusBar style="auto" /> */}
         <Text>Photo Gallery</Text> 
         <Image
-          style={{ width: 100, height: 100, marginBottom: 15 }}
-          source={require('./assets/image1.JPG')}
+          style={{ width: 200, height: 200, marginBottom: 15 }}
+          source={require('./assets/Drala-photos/PXL_20201007_173427746.MP.jpg')}
         /> 
-       
     </View> 
   );
 }
