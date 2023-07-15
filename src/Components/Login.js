@@ -43,6 +43,8 @@ const Login = () => {
   const { loading, error, data } = useQuery(Get_User_Email_Query, {
     variables: { email },
   });
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigation = useNavigation();
   
   const handleSubmit = () => {
@@ -50,9 +52,11 @@ const Login = () => {
       console.log("User logged in:", data.userByEmail);
       storeData(data.userByEmail)
       navigation.navigate("Home Page")
+      setEmail("")
+      setErrorMessage("")
       // console.log(userInfo, "UI line 36 login")
     } else {
-      console.log("Email not found");
+      setErrorMessage("Sorry, please try again! Can't find that email.");
     }
   };
 
@@ -118,11 +122,14 @@ const Login = () => {
               />
             </View>
             <TouchableOpacity
-              style={[styles.loginButton, { backgroundColor: "#52217B" }]}
+              style={[styles.loginButton, { backgroundColor: "#655772" }]}
               onPress={handleSubmit}
             >
               <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
+            {errorMessage !== "" && (
+              <Text style={styles.errorMessage}>{errorMessage}</Text>
+            )}
           </View>
         </View>
       </View>
@@ -146,11 +153,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#ffee91",
   },
   buttonText: {
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  errorMessage: {
+    color: "red",
+    marginTop: 10,
+    textAlign: "center",
   },
 });
 
