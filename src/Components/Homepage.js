@@ -27,6 +27,7 @@ const Homepage = () => {
     fetchUserInfo();
   }, []);
 
+
   const handleBoxPress = (boxNumber) => {
     switch (boxNumber) {
       case 1:
@@ -57,6 +58,15 @@ const Homepage = () => {
     navigation.setOptions({
       headerTintColor: "#3c304a"
     });
+
+     const handleLoginButtonPress = () => {
+       if (userInfo) {
+         AsyncStorage.removeItem("userInfo");
+         setUserInfo(null);
+       } else {
+         navigation.navigate("Login");
+       }
+     };
   
   return (
     <ImageBackground
@@ -109,7 +119,9 @@ const Homepage = () => {
           />
         </View>
     </View>
+    
     </ImageBackground>
+    
   );
 };
 
