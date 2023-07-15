@@ -15,6 +15,7 @@ import VideosPage from './VideosPage.js'
 import Gallery from './Gallery'
 import Login from './Login';
 import MeditationStats from './MeditationStats';
+import { Ionicons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 
@@ -75,12 +76,12 @@ if (error) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: "#EAE2FA",
+    backgroundColor: "#F1F1F1",
     flex: 1,
   },
   container: {
     flex: 1,
-    backgroundColor: "#EAE2FA",
+    backgroundColor: "#F1F1F1",
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
