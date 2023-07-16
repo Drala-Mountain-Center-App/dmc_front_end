@@ -1,16 +1,37 @@
 import { gql } from "@apollo/client";
 
-export const Get_Email_QUERY = gql`
-  query {
-    userByEmail(email: "email@email") {
+
+export const GET_MEDITATION_QUERY = gql`
+mutation($userEmail: String!, $totalSittingTime: Int!) {
+  createMeditationByEmail(input: {
+    totalSittingTime: $totalSittingTime,
+    userEmail: $userEmail
+  }) {
+    id
+    totalSittingTime
+    createdAt
+    completedBy {
       id
       firstName
-      lastName
-      email
-      member
-      }
+    }
   }
-`
+}
+`;
+
+export const Get_User_Email_Query = gql`
+query GetUserByEmail($email: String!) {
+  userByEmail(email: $email) {
+    id
+    firstName
+    lastName
+    email
+    member
+    totalMeditations
+    totalMeditationTime
+    averageMeditationTime
+  }
+}
+`;
 
 export const Get_Program_Query = gql`
   query {

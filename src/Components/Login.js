@@ -10,21 +10,8 @@ import {
 import { useQuery, gql } from "@apollo/client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import { Get_User_Email_Query } from "../queries";
 
-const Get_User_Email_Query = gql`
-  query GetUserByEmail($email: String!) {
-    userByEmail(email: $email) {
-      id
-      firstName
-      lastName
-      email
-      member
-      totalMeditations
-      totalMeditationTime
-      averageMeditationTime
-    }
-  }
-`;
 
 const storeData = async (value) => {
   try {

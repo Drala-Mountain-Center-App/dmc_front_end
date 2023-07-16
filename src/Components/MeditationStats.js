@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, Text, StyleSheet, Image, Animated } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useQuery } from "@apollo/client";
+import { Get_User_Email_Query } from "../queries";
 
 const getData = async () => {
   try {
@@ -12,30 +14,50 @@ const getData = async () => {
 };
 
 const MeditationStats = () => {
-  const [userInfo, setUserInfo] = useState(null);
-  const [error, setError] = useState(null);
-  const animatedValue = useRef(new Animated.Value(0)).current;
+  const [userEmail, setUserEmail] = useState("");
+  const { loading, error, data: meditationStats, refetch } = useQuery(Get_User_Email_Query, {
+    variables: { email: userEmail },
+  });
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      try {
-        const data = await getData();
-        setUserInfo(data);
-      } catch (error) {
-        setError(error.message);
-      }
+      const data = await getData();
+      setUserEmail(data.email);
+      console.log(data.email, "line 26");
+      console.log(userEmail, "line 27");
+
     };
 
     fetchUserInfo();
   }, []);
 
   useEffect(() => {
+    refetch();
+  }, [userEmail]);
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
+
+  if (!userEmail || !meditationStats) {
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 1000,
       useNativeDriver: true,
     }).start();
-  }, []);
+  };
 
   if (error) {
     return (

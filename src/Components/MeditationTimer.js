@@ -1,16 +1,63 @@
 import React, { useRef, useState, useEffect } from "react";
 import { View, Text, StyleSheet, ImageBackground, Dimensions, Animated, TouchableOpacity } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { GET_MEDITATION_QUERY } from "../queries";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { useMutation } from "@apollo/client";
+
+// const client = new ApolloClient({
+//   cache: new InMemoryCache(),
+// });
 
 const { width, height } = Dimensions.get("window");
 const circleWidth = width / 2;
+  
+
+const getData = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem("userInfo");
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch (e) {
+    // error reading value
+  }
+};
 
 const MeditationTimer = () => {
   const [timerRunning, setTimerRunning] = useState(false);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(1190);
   const intervalRef = useRef();
-
+  const [userInfo, setUserInfo] = useState({userEmail: "",
+    totalSittingTime: 0});
+    {console.log(userInfo)}
+    const [sendStats] = useMutation(GET_MEDITATION_QUERY, {
+      variables: {
+        userEmail: userInfo?.email || "",
+        totalSittingTime: duration,
+      }
+    });
+  
+  
   useEffect(() => {
-    if (duration >= 1200) {
+    const fetchUserInfo = async () => {
+      const data = await getData();
+      setUserInfo(data);
+      // console.log(userInfo)
+    };
+    
+    
+    fetchUserInfo();
+    if (duration >= 1200 && userInfo) {
+      setTimerRunning(false);
+      startStopTimer();
+      startAnimation();
+      setStartButton("Meditation Complete!")
+      console.log(duration, "This is working");
+      
+      sendStats()
+      
+      setDuration(0)
+      console.log(userInfo)
+    } else if (duration >= 1200) {
       setTimerRunning(false);
       startStopTimer();
       startAnimation();
