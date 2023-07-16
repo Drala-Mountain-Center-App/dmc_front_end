@@ -18,7 +18,6 @@ const storeData = async (value) => {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem("userInfo", jsonValue);
   } catch (e) {
-    // saving error
   }
 };
 

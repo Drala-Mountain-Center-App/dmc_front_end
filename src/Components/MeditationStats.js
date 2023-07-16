@@ -15,9 +15,15 @@ const getData = async () => {
 
 const MeditationStats = () => {
   const [userEmail, setUserEmail] = useState("");
-  const { loading, error, data: meditationStats, refetch } = useQuery(Get_User_Email_Query, {
+  const {
+    loading,
+    error,
+    data: meditationStats,
+    refetch,
+  } = useQuery(Get_User_Email_Query, {
     variables: { email: userEmail },
   });
+  const [animatedValue] = useState(new Animated.Value(0));
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -25,7 +31,6 @@ const MeditationStats = () => {
       setUserEmail(data.email);
       console.log(data.email, "line 26");
       console.log(userEmail, "line 27");
-
     };
 
     fetchUserInfo();
@@ -35,13 +40,6 @@ const MeditationStats = () => {
     refetch();
   }, [userEmail]);
 
-  if (loading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <Text>Loading...</Text>
-      </View>
-    );
-  }
 
   if (error) {
     return (
@@ -57,17 +55,9 @@ const MeditationStats = () => {
       duration: 1000,
       useNativeDriver: true,
     }).start();
-  };
-
-  if (error) {
-    return (
-      <View style={styles.loadingContainer}>
-        <Text>{error}</Text>
-      </View>
-    );
   }
 
-  if (!userInfo) {
+  if (!meditationStats) {
     return (
       <View style={styles.loadingContainer}>
         <Text>No current meditations. Please login and let's get zen!</Text>
@@ -90,17 +80,19 @@ const MeditationStats = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.meditationStatsText}>
-        {userInfo.firstName}'s Meditation Stats:
+        {meditationStats.userByEmail.firstName}'s Meditation Stats:
       </Text>
       <View style={styles.statsContainer}>
         <Text style={styles.meditationStatsItem}>
-          Total Meditations: {userInfo.totalMeditations}
+          Total Meditations: {meditationStats.userByEmail.totalMeditations}
         </Text>
         <Text style={styles.meditationStatsItem}>
-          Total Time Spent Meditating: {userInfo.totalMeditationTime}
+          Total Time Spent Meditating:{" "}
+          {meditationStats.userByEmail.totalMeditationTime}
         </Text>
         <Text style={styles.meditationStatsItem}>
-          Average Time Spent Meditating: {userInfo.averageMeditationTime}
+          Average Time Spent Meditating:{" "}
+          {meditationStats.userByEmail.averageMeditationTime}
         </Text>
       </View>
       <Animated.Image
@@ -117,8 +109,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     paddingVertical: 20,
-    backgroundColor: "#f5f2ec",
-    color: "#3c304a",
+    backgroundColor: "#F5F2EC",
+    color: "#3C304A",
   },
   meditationStatsText: {
     fontSize: 24,
