@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { View, Text, StyleSheet, Image, Animated } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useQuery } from "@apollo/client";
 import { Get_User_Email_Query } from "../queries";
@@ -8,8 +8,8 @@ const getData = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem("userInfo");
     return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch (e) {
-    // error reading value
+  } catch (error) {
+    throw new Error("Failed to retrieve user info.");
   }
 };
 
@@ -25,6 +25,7 @@ const MeditationStats = () => {
       setUserEmail(data.email);
       console.log(data.email, "line 26");
       console.log(userEmail, "line 27");
+
     };
 
     fetchUserInfo();
@@ -51,20 +52,61 @@ const MeditationStats = () => {
   }
 
   if (!userEmail || !meditationStats) {
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  if (error) {
     return (
       <View style={styles.loadingContainer}>
-        <Text>Loading...</Text>
+        <Text>{error}</Text>
       </View>
     );
   }
 
+  if (!userInfo) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>No current meditations. Please login and let's get zen!</Text>
+      </View>
+    );
+  }
+
+  const imageStyle = {
+    opacity: animatedValue,
+    transform: [
+      {
+        translateY: animatedValue.interpolate({
+          inputRange: [0, 1],
+          outputRange: [50, 0],
+        }),
+      },
+    ],
+  };
+
   return (
     <View style={styles.container}>
-      {console.log(meditationStats)}
-      <Text>{meditationStats.userByEmail.firstName} Meditation Stats:</Text>
-      <Text>Total Meditations: {meditationStats.userByEmail.totalMeditations}</Text>
-      <Text>Total Time Spent Meditating: {meditationStats.userByEmail.totalMeditationTime}</Text>
-      <Text>Average Time Spent Meditating: {meditationStats.userByEmail.averageMeditationTime}</Text>
+      <Text style={styles.meditationStatsText}>
+        {userInfo.firstName}'s Meditation Stats:
+      </Text>
+      <View style={styles.statsContainer}>
+        <Text style={styles.meditationStatsItem}>
+          Total Meditations: {userInfo.totalMeditations}
+        </Text>
+        <Text style={styles.meditationStatsItem}>
+          Total Time Spent Meditating: {userInfo.totalMeditationTime}
+        </Text>
+        <Text style={styles.meditationStatsItem}>
+          Average Time Spent Meditating: {userInfo.averageMeditationTime}
+        </Text>
+      </View>
+      <Animated.Image
+        source={require("../../assets/meditation.png")}
+        style={[styles.image, imageStyle]}
+      />
     </View>
   );
 };
@@ -73,12 +115,30 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: "center",
+    justifyContent: "flex-start",
     paddingVertical: 20,
     backgroundColor: "#f5f2ec",
     color: "#3c304a",
   },
-  loadingContainer: {
-    color: "black",
+  meditationStatsText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 20,
+    color: "#383240",
+  },
+  statsContainer: {
+    padding: 10,
+    width: "80%",
+  },
+  meditationStatsItem: {
+    fontSize: 16,
+    marginBottom: 10,
+  },
+  image: {
+    width: "100%",
+    height: "50%",
+    resizeMode: "contain",
   },
 });
 

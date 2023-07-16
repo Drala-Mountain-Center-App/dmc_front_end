@@ -12,8 +12,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { Get_User_Email_Query } from "../queries";
 
+
 const storeData = async (value) => {
-  try {    
+  try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem("userInfo", jsonValue);
   } catch (e) {
@@ -21,24 +22,34 @@ const storeData = async (value) => {
   }
 };
 
-const Login = () => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [userInfo, setUserInfo] = useState({})
   const { loading, error, data } = useQuery(Get_User_Email_Query, {
     variables: { email },
   });
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigation = useNavigation();
-  
-  const handleSubmit = () => {
+
+  const handleSubmit = async () => {
     if (data && data.userByEmail) {
       console.log("User logged in:", data.userByEmail);
-      storeData(data.userByEmail)
-      navigation.navigate("Home Page")
-      // console.log(userInfo, "UI line 36 login")
+      await storeData(data.userByEmail);
+      navigation.navigate("Home Page");
+      setEmail("");
+      setPassword("");
+      setErrorMessage("");
+      setIsLoggedIn(true);
     } else {
-      console.log("Email not found");
+      setErrorMessage("Sorry, please try again! Can't find that email.");
     }
+  };
+
+  const handleLogoutButtonPress = async () => {
+    await AsyncStorage.removeItem("userInfo");
+    navigation.navigate("Login");
+    setIsLoggedIn(false);
   };
 
   return (
@@ -47,7 +58,7 @@ const Login = () => {
         <View style={{ padding: 30 }}>
           <Text
             style={{
-              color: "#52217B",
+              color: "#383240",
               fontSize: 30,
               textAlign: "center",
               fontWeight: "bold",
@@ -103,11 +114,20 @@ const Login = () => {
               />
             </View>
             <TouchableOpacity
-              style={[styles.loginButton, { backgroundColor: "#52217B" }]}
-              onPress={handleSubmit}
+              style={[
+                styles.loginButton,
+                { backgroundColor: "#655772" },
+                isLoggedIn && { backgroundColor: "#FF0000" },
+              ]}
+              onPress={isLoggedIn ? handleLogoutButtonPress : handleSubmit}
             >
-              <Text style={styles.buttonText}>Login</Text>
+              <Text style={styles.buttonText}>
+                {isLoggedIn ? "Logout" : "Login"}
+              </Text>
             </TouchableOpacity>
+            {errorMessage !== "" && (
+              <Text style={styles.errorMessage}>{errorMessage}</Text>
+            )}
           </View>
         </View>
       </View>
@@ -131,11 +151,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#ffee91",
   },
   buttonText: {
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  errorMessage: {
+    color: "red",
+    marginTop: 10,
+    textAlign: "center",
   },
 });
 

@@ -53,13 +53,17 @@ export const Get_Program_Query = gql`
 export const Get_Videos_Query = gql`
   query {
     allVideos {
+      id
       title
+      description
       speaker
       topic
       length
       dateRecorded
       videoUrl
+      thumbnailUrl
       embedCode
+      vimeoId
     }
   }
 `;

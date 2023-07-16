@@ -2,10 +2,10 @@ describe("Videos Page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:19006/");
   });
-
   it("should be able to navigate to the videos page after clicking on it and see videos available", () => {
-    cy.get('[data-testid="videos-home"]').should("contain", "Videos").click();
-
+    cy.get(".r-alignItems-1habvwh > :nth-child(3)")
+      .should("contain", "Videos")
+      .click();
     cy.get(':nth-child(2) > [data-testid="event-title"]').should(
       "contain",
       "Learn to Meditate Part 1"
@@ -23,7 +23,6 @@ describe("Videos Page", () => {
       "Date Recorded: 18 / 23 / 2017"
     );
   });
-
   it("should be able to return home after watching the video", () => {
     cy.get(".css-view-175oi2r").click();
     cy.get('[data-testid="drala"]').should(

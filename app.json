@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "AwesomeProject",
-    "slug": "AwesomeProject",
+    "name": "Drala Mountain Center App",
+    "slug": "Meditate with DMC",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/meditate.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

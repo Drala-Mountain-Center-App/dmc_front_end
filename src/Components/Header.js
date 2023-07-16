@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Header = () => {
    const navigation = useNavigation();
@@ -15,7 +16,7 @@ const Header = () => {
         Drala Mountain Center
       </Text>
       <TouchableOpacity onPress={handleUserIconPress}>
-        <Ionicons name="person" size={24} color="white" />
+        <Ionicons name="person" size={28} color="white" />
       </TouchableOpacity>
     </View>
   );
