@@ -28,7 +28,6 @@ const MeditationTimer = () => {
   const intervalRef = useRef();
   const [userInfo, setUserInfo] = useState({userEmail: "",
     totalSittingTime: 0});
-    {console.log(userInfo)}
     const [sendStats] = useMutation(GET_MEDITATION_QUERY, {
       variables: {
         userEmail: userInfo?.email || "",
@@ -41,7 +40,6 @@ const MeditationTimer = () => {
     const fetchUserInfo = async () => {
       const data = await getData();
       setUserInfo(data);
-      // console.log(userInfo)
     };
     
     
@@ -50,19 +48,14 @@ const MeditationTimer = () => {
       setTimerRunning(false);
       startStopTimer();
       startAnimation();
-      setStartButton("Meditation Complete!")
-      console.log(duration, "This is working");
-      
+      setStartButton("Meditation Complete!")      
       sendStats()
-      
       setDuration(0)
-      console.log(userInfo)
     } else if (duration >= 1200) {
       setTimerRunning(false);
       startStopTimer();
       startAnimation();
       setStartButton("Meditation Complete!")
-      console.log(duration);
       setDuration(0)
     }
   }, [duration]);
@@ -81,7 +74,6 @@ const MeditationTimer = () => {
     } else {
       setTimerRunning(false);
       clearInterval(intervalRef.current);
-      console.log(duration)
     }
   };
 

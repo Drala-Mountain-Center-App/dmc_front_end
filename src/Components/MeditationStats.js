@@ -28,9 +28,9 @@ const MeditationStats = () => {
   useEffect(() => {
     const fetchUserInfo = async () => {
       const data = await getData();
-      setUserEmail(data.email);
-      console.log(data.email, "line 26");
-      console.log(userEmail, "line 27");
+      if(data) {
+        setUserEmail(data.email);
+      }
     };
 
     fetchUserInfo();
@@ -40,27 +40,20 @@ const MeditationStats = () => {
     refetch();
   }, [userEmail]);
 
-
-  if (error) {
-    return (
-      <View style={styles.loadingContainer}>
-        <Text>Error: {error.message}</Text>
-      </View>
-    );
-  }
-
-  if (!userEmail || !meditationStats) {
-    Animated.timing(animatedValue, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-  }
+  Animated.timing(animatedValue, {
+    toValue: 1,
+    duration: 1000,
+    useNativeDriver: true,
+  }).start();
 
   if (!meditationStats) {
     return (
-      <View style={styles.loadingContainer}>
-        <Text>No current meditations. Please login and let's get zen!</Text>
+      <View style={styles.container}>
+        <Text style={styles.noMeditation}>No current meditations. Please login and let's get zen!</Text>
+        <Animated.Image
+        source={require("../../assets/meditation.png")}
+        style={[styles.image, imageStyle]}
+      />
       </View>
     );
   }
@@ -111,6 +104,11 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: "#F5F2EC",
     color: "#3C304A",
+  },
+  noMeditation: {
+    margin: 15,
+    fontSize: 20,
+    textAlign: "center"
   },
   meditationStatsText: {
     fontSize: 24,
