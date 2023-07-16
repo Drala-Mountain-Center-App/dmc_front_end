@@ -19,8 +19,8 @@ import MeditationStats from './src/Components/MeditationStats';
 const Stack = createStackNavigator();
 
 export default function App() {
-   const { loading, error, data } = useQuery(Get_Program_Query, { client });
-
+  const { loading, error, data } = useQuery(Get_Program_Query, { client });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 if (loading) {
   return (
     <View style={styles.loadingContainer}>
@@ -41,16 +41,18 @@ if (error) {
     <ApolloProvider client={client}>
       <SafeAreaView style={styles.screen}>
         <NavigationContainer>
-        <Header />
+          <Header isLoggedIn={isLoggedIn} />
           <Stack.Navigator>
             <Stack.Screen
               name="Home Page"
               component={Homepage}
+              isLoggedIn={isLoggedIn}
               options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Login"
               component={Login}
+              isLoggedIn={isLoggedIn}
               options={{
                 headerShown: true,
               }}
@@ -62,9 +64,8 @@ if (error) {
             />
             <Stack.Screen name="Programs" component={Calendar} />
             <Stack.Screen name="Videos" component={VideosPage} />
-             <Stack.Screen name="Gallery" component={Gallery} />
+            <Stack.Screen name="Gallery" component={Gallery} />
             <Stack.Screen name="Meditation Stats" component={MeditationStats} />
-
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar testID="status-bar" style="auto" />
