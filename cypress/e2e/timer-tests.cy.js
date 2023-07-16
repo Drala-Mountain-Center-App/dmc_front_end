@@ -1,7 +1,7 @@
 describe('Timer tests', () => {
 beforeEach(() => {
     cy.visit('http://localhost:19006/')
-    cy.get('[data-testid="timer-home"]').should("contain", "Meditation Timer").click()
+    cy.get('.r-alignItems-1habvwh > :nth-child(1)').should("contain", "Meditation Timer").click()
     
   })
 
@@ -22,6 +22,6 @@ beforeEach(() => {
 
   it("Should allow a user to go back to the home page by clicking the arrow in the navigation container next to the words 20 Min Meditation Timer", () => {
     cy.get('[style="justify-content: center; align-items: flex-start; margin-left: 0px;"] > .r-cursor-1loqt21').click()
-    cy.get('[data-testid="timer-home"]').should("contain", "Meditation Timer")
+    cy.get('.r-alignItems-1habvwh > :nth-child(1)').should("contain", "Meditation Timer")
   })
   })

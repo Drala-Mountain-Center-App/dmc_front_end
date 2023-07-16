@@ -1,11 +1,19 @@
 describe('Home tests', () => {
-  it('visits web development page', () => {
+  beforeEach(() => {
+    // cy.intercept('POST', "https://drala-mountain-api-4812ef039e59.herokuapp.com/graphql", {
+    //   fixture: 'event-examples.json'
+    // })
     cy.visit('http://localhost:19006/')
+  });
+  
+  it('Should be able to visit the home page and see 6 widgets', () => {
+    // cy.visit('http://localhost:19006/')
     cy.get('[data-testid="drala"]')
-    cy.get('[data-testid="timer-home"]').should("contain", "Meditation Timer")
-    cy.get('[data-testid="programs"]').should("contain", "Program Calendar")
-    cy.get('[data-testid="videos-home"]').should("contain", "Videos")
-    cy.get('[data-testid="gallery-home"]').should("contain", "Gallery")
-    cy.get('[data-testid="donate-home"]').should("contain", "Donate")
+    cy.get('.r-alignItems-1habvwh > :nth-child(1)').should("contain", "Meditation Timer")
+    cy.get('.r-alignItems-1habvwh > :nth-child(2)').should("contain", "Program Calendar")
+    cy.get('.r-alignItems-1habvwh > :nth-child(3)').should("contain", "Teaching Videos")
+    cy.get('.r-alignItems-1habvwh > :nth-child(4)').should("contain", "Photo Gallery")
+    cy.get('.r-alignItems-1habvwh > :nth-child(5)').should("contain", "Donate to DMC")
+    cy.get('.r-alignItems-1habvwh > :nth-child(6)').should("contain", "Meditation Stats")
   })
 })

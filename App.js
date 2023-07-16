@@ -15,6 +15,9 @@ import VideosPage from './src/Components/VideosPage.js'
 import Gallery from './src/Components/Gallery'
 import Login from './src/Components/Login';
 import MeditationStats from './src/Components/MeditationStats';
+import { AppRegistry } from 'react-native';
+
+AppRegistry.registerComponent('YourAppName', () => App);
 
 const Stack = createStackNavigator();
 
