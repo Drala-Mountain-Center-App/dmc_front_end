@@ -3,7 +3,7 @@ describe("Videos Page", () => {
     cy.visit("http://localhost:19006/");
   });
   it("should be able to navigate to the videos page after clicking on it and see videos available", () => {
-    cy.get(".r-alignItems-1habvwh > :nth-child(3)")
+    cy.get('.r-alignItems-1habvwh > :nth-child(3)')
       .should("contain", "Videos")
       .click();
     cy.get(':nth-child(2) > [data-testid="event-title"]').should(
