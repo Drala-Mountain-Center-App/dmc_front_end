@@ -10,7 +10,6 @@ const getData = async () => {
     const jsonValue = await AsyncStorage.getItem("userInfo");
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
-    // error reading value
   }
 };
 
@@ -74,7 +73,6 @@ const Homepage = () => {
       style={styles.backgroundImage}
     >
     <View style={styles.screen}>
-      {userInfo && <Text style={styles.welcomeHeader}>Welcome, {userInfo.firstName}!</Text>}
         <View style={styles.gridContainer}>
           <Box 
             iconName="timer-outline" 
