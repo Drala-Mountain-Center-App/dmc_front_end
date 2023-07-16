@@ -79,6 +79,7 @@ const Homepage = () => {
           <Box 
             iconName="timer-outline" 
             text="Meditation Timer"
+            testID="timer-home"
             style={styles.box}
             onPress={() => handleBoxPress(1)}
           />
