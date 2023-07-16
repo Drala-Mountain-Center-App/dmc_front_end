@@ -2,9 +2,8 @@ describe('Timer tests', () => {
 beforeEach(() => {
     cy.visit('http://localhost:19006/')
     cy.get('.r-alignItems-1habvwh > :nth-child(1)').should("contain", "Meditation Timer").click()
-    
   })
-
+  
   it("Takes the user to the meditation page after clicking on link from the home page. On the meditation page they see an image from the Drala Center, the word, Begin, and a breath animation", () => {
     cy.get('[data-testid="timer-background"]')
     cy.get('[data-testid="breath-animation"]')

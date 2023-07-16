@@ -28,9 +28,10 @@ const MeditationTimer = () => {
   const intervalRef = useRef();
   const [userInfo, setUserInfo] = useState({userEmail: "",
     totalSittingTime: 0});
+    {console.log(userInfo)}
     const [sendStats] = useMutation(GET_MEDITATION_QUERY, {
       variables: {
-        userEmail: userInfo.email,
+        userEmail: userInfo?.email || "",
         totalSittingTime: duration,
       }
     });
