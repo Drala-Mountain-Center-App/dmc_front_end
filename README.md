@@ -33,7 +33,7 @@
 
 The Drala Mountain Center App was made in association with [Drala Mountain Center](https://www.dralamountain.org/).
 The App allows users to see scheduled programs, meditate with a meditation timer, view videos embeded in the app, view their meditation stats, view images of DMC, and donate to DMC via their website. <br>
-The dmc_back_end application provides a single GraphQL endpoint with all app information. The team chose GraphQL for the simplicity of having a single endpoint with the capability to be flexible and efficient when handling queries from the front end application. 
+The dmc_back_end application provides a single GraphQL endpoint with all app information. The team chose GraphQL for the simplicity of having a single endpoint with the capability to be flexible and efficient when handling queries from the front end application. We selecting react native for faster mobile app development and Cross-platform compatibility.
 </div>
 
 ### Built With:
@@ -67,6 +67,21 @@ The dmc_back_end application provides a single GraphQL endpoint with all app inf
 * Specific Advanced Practice Trackers (Ngondro/Stroke Practice).
 * Integrate Web-sockets to add live chat feature.
 * Add collaborative meditation option (using google meetup, facetime or other video app, not sure what the options are)
+
+## Wins:
+- Successfully created our first app using React Native 
+- Successful collaboration as a cohesive 6-person full-stack team
+- Agile work style embraced with efficiency and adaptability
+- Achievement of Minimum Viable Product (MVP) and subsequent extensions
+- Seamless integration of GraphQL and Apollo Client
+- Responsive & accessbile design
+- Implementation of CSS animation for the mediation timer with functionality to track meditations
+
+## Challenges:
+- Implementation of cypress testing with React Native, in addition to continous integation with github projects
+- Overcoming cache policy challenges and troubleshooting Apollo Client errors
+- Mutation challenges with storing meditation data with use of local storage
+- Login feature extension
 
 ## GraphQL Fields: 
 * GraphQL endpoint: https://drala-mountain-api-4812ef039e59.herokuapp.com/graphql
