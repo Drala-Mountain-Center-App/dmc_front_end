@@ -89,9 +89,9 @@ Additionally you may want to install a React Native debugger
 ## Login Instructions
 You are able to use this app without logged in; however, to use functionality of storing and viewing personal meditation stats you can login with the following email address with any password at this stage of productions:
 bobdylan@gmail.com
-loganlogan@gmail.com
-reid@gmail.com
-email@email.email
+- loganlogan@gmail.com
+- reid@gmail.com
+- email@email.email
 
 ## Wins:
 - Implementing our first app with React Native
@@ -171,7 +171,6 @@ mutation {
 ## Schema
 
 <img src="https://github.com/Drala-Mountain-Center-App/dmc_back_end/assets/121198380/e634bdfe-e66a-473e-86c9-3691aa6f1748" alt="DMC Schema Image" width="90%">
-
 
 ## Contributors
 
