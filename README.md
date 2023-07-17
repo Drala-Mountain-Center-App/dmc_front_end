@@ -22,11 +22,16 @@
 - [Built With](#built-with)
 - [Minimum Viable Product](#minimum-viable-product)
 - [Possible Extensions](#possible-extensions)
+- [Application Tour](#application-tour)
+- [Set up](#set-up)
+- [Login Instructions](#login-instructions)
+- [Wins](#wins)
+- [Challenges](#challenges)
+- [Wireframe](#wireframe)
 - [GraphQL Fields](#graphql-fields)
  - [Queries and Mutations](#queries-and-mutations)
   - [List of queries](#list-of-queries)
   - [List of mutations](#list-of-mutations)
-- [Application Tour](#application-tour)
 - [Schema](#schema)
 - [Contributors](#contributors)
 
@@ -75,23 +80,23 @@ The dmc_back_end application provides a single GraphQL endpoint with all app inf
 <div style="display: flex; justify-content: space-between;">
   <img src="https://github.com/Drala-Mountain-Center-App/dmc_front_end/assets/115356592/e9d40706-7568-4b1f-ae80-4f07cd4f1f21" alt="login" width="300" />
   <img src="https://github.com/Drala-Mountain-Center-App/dmc_front_end/assets/115356592/4ce76c83-f745-4b43-bec7-e04e4ddd8ad1" alt="calendar" width="300" />
+  <img src="https://github.com/Drala-Mountain-Center-App/dmc_front_end/assets/115356592/09ec90b4-7ef9-4d17-a3d1-195e07cb0208" alt="videos/photos" width="300" />
 </div>
 
 ## Set up
-Fork this repo
-Clone the repo to your local machine
-Go to the app store and install Xcode
-Once you've installed, you should be able to type `npm i`, then `npm run ios` and open the ios simulator
-Pick the simulator model of your choice in the xcode preferences, ie: iPhone 14
-The simulator will reload when you make changes
-Additionally you may want to install a React Native debugger
+1. Fork this repo
+2. Clone the repo to your local machine
+3. Go to the app store and install Xcode
+4. Once you've installed, you should be able to type `npm i`, then `npm run ios` and open the ios simulator
+5. Pick the simulator model of your choice in the xcode preferences, ie: iPhone 14
+6. The simulator will reload when you make changes
 
 ## Login Instructions
-You are able to use this app without logged in; however, to use functionality of storing and viewing personal meditation stats you can login with the following email address with any password at this stage of productions:
-bobdylan@gmail.com
-loganlogan@gmail.com
-reid@gmail.com
-email@email.email
+You are able to use this app without logging in; however, to use functionality of storing and viewing personal meditation stats you can login with the following email address with any password at this stage of production:
+- bobdylan@gmail.com
+- loganlogan@gmail.com
+- reid@gmail.com
+- email@email.email
 
 ## Wins:
 - Implementing our first app with React Native
@@ -99,12 +104,12 @@ email@email.email
 - Agile work style embraced with efficiency and adaptability
 - Achievement of Minimum Viable Product (MVP) and subsequent extensions
 - Seamless integration of GraphQL and Apollo Client
-- Animated API and animations with meditation timer/stats
+- Animations with meditation timer/stats
   
 ## Challenges
 - Overcoming cache policy challenges and troubleshooting Apollo Client errors
 - Implementing Cypress end to end testing with React Native
-- AsyncStorage for storing user information
+- AsyncStorage for storing user information with mutation query's
 - Learning curve with implementation of React Native, compatability and styling within components
   
 ## Wireframe
