@@ -6,7 +6,11 @@ import {
   TouchableOpacity,
   Image,
   Linking,
+  Dimensions,
+  Platform
 } from "react-native";
+
+let { width } = Dimensions.get("window");
 
 const formatDateString = (dateString) => {
   const parts = dateString.split(" ")[0].split("-");
@@ -46,7 +50,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
     marginBottom: 20,
+     width: Platform.OS === 'web' && width > 800 ? '50%' : '100%', 
+    alignSelf: Platform.OS === 'web' && width > 800 ? 'center' : 'flex-start', 
+    margin: Platform.OS === 'web' && width > 800 ? 20 : 0
   },
+    
   thumbnail: {
     height: 200,
     resizeMode: "cover",

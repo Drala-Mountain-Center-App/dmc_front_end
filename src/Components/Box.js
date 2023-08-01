@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, Pressable, StyleSheet, Dimensions } from 'react-native';
+import React, { useState } from "react";
+import { View, Text, Pressable, StyleSheet, Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Platform } from "react-native";
 
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-const iconSize = windowWidth > 400 ? 100 : 80;  
-
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+const iconSize = windowWidth > 400 ? 100 : 80;
 
 const Box = ({ iconName, text, onPress, image, imageStyle }) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -37,16 +36,14 @@ const Box = ({ iconName, text, onPress, image, imageStyle }) => {
 const styles = StyleSheet.create({
   box: {
     flexGrow: 1,
-    width: windowWidth / 4,
-    height: windowHeight / 6,
+    width: Platform.OS === "web" ? windowWidth / 4 : windowWidth / 4,
+    height: Platform.OS === "web" ? windowHeight / 4 : windowHeight / 6,
     backgroundColor: "#383240",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 10,
-    margin: 10,
-    marginHorizontal: 10,
-    marginVertical: 10, 
+    margin: Platform.OS === "web" ? 30 : 10,
     borderColor: "#383249",
     opacity: 1,
     borderWidth: 2,
@@ -60,15 +57,15 @@ const styles = StyleSheet.create({
   },
 
   boxPressed: {
-    backgroundColor: '#383250',
-    shadowColor: '#fffff4',  
-    shadowOpacity: .04,  
-    shadowRadius: 6,  
+    backgroundColor: "#383250",
+    shadowColor: "#fffff4",
+    shadowOpacity: 0.04,
+    shadowRadius: 6,
     shadowOpacity: 0.8,
   },
-  
+
   boxTextContainer: {
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
 
   boxText: {
@@ -76,7 +73,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#ffffff",
     textAlign: "center",
-    
   },
 });
 

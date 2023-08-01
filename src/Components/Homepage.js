@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Pressable, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground, Dimensions } from 'react-native';
+import { View, Platform, Text, Pressable, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,14 +17,18 @@ const Homepage = () => {
   const navigation = useNavigation();
   const [userInfo, setUserInfo] = useState(null);
   
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      const data = await getData();
-      setUserInfo(data);
-    };
+useEffect(() => {
+  let isMounted = true; 
+  const fetchUserInfo = async () => {
+    const data = await getData();
+    if (isMounted) setUserInfo(data); 
+  };
 
-    fetchUserInfo();
-  }, []);
+  fetchUserInfo();
+  return () => {
+    isMounted = false;
+  }; // clean up
+}, []);
 
 
   const handleBoxPress = (boxNumber) => {
@@ -139,22 +143,24 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "flex-start",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     margin: 0,
-    marginTop: "25%",
-    padding: 0,
+    marginTop: Platform.OS === "web" ? "8%" : "25%",
+    marginBottom: Platform.OS === "web" ? "8%" : "25%",
+    marginLeft: Platform.OS === "web" ? "7%" : 0,
+    marginRight: Platform.OS === "web" ? "7%" : 0,
+    padding: Platform.OS === "web" ? 0 : 0,
     width: "90%",
-    alignSelf: "center"
-
+    alignSelf: "center",
   },
- 
+
   welcomeHeader: {
     padding: 5,
     paddingLeft: 20,
     marginBottom: 20,
     fontSize: 18,
     color: "#383240",
-  }
+  },
 });
 
 export default Homepage;
