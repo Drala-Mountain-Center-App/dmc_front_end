@@ -47,18 +47,18 @@ if (error) {
           <Header isLoggedIn={isLoggedIn} />
           <Stack.Navigator>
             <Stack.Screen
-              name="Home Page"
-              component={Homepage}
-              isLoggedIn={isLoggedIn}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
               name="Login"
               component={Login}
               isLoggedIn={isLoggedIn}
               options={{
                 headerShown: true,
               }}
+            />
+            <Stack.Screen
+              name="Home Page"
+              component={Homepage}
+              isLoggedIn={isLoggedIn}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               testID="timer-header-twenty"

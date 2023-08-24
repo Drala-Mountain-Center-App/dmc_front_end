@@ -67,3 +67,20 @@ export const Get_Videos_Query = gql`
     }
   }
 `;
+
+export const Sign_In_User = gql`
+  mutation($email: String!, $password: String!) {
+    signInUser( input: {
+        credentials: {
+            email: $email,
+            password: $password
+        }
+    }) {
+        token
+        user {
+            id
+            firstName
+        }
+    }
+  }
+`;

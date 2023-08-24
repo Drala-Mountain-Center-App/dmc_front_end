@@ -7,10 +7,10 @@ import {
   Text,
   View,
 } from "react-native";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, useMutation } from "@apollo/client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import { Get_User_Email_Query } from "../queries";
+import { Sign_In_User } from "../queries";
 const storeData = async (value) => {
   try {
     const jsonValue = JSON.stringify(value);
@@ -22,16 +22,20 @@ const storeData = async (value) => {
 const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loading, error, data } = useQuery(Get_User_Email_Query, {
-    variables: { email },
+  const { loading, error, data } = useMutation(Sign_In_User, {
+    variables: { 
+      email,
+      password
+     },
   });
   const [errorMessage, setErrorMessage] = useState("");
   const navigation = useNavigation();
   const handleSubmit = async () => {
     try {
-      if (data && data.userByEmail) {
-        console.log("User logged in:", data.userByEmail);
-        await storeData(data.userByEmail);
+      console.log(`${data}`)
+      if (data && data.signInUser) {
+        console.log("User logged in:", data.signInUser);
+        await storeData(data.signInUser);
         navigation.navigate("Home Page");
         setEmail("");
         setPassword("");
