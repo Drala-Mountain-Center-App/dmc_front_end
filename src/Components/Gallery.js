@@ -5,7 +5,7 @@ import { ScrollView, Text, StyleSheet, Image } from 'react-native';
 const Gallery = () => {
 
 const imagePaths = [
-  equire("../../assets/Drala-photos/meadow.jpg"), 
+  require("../../assets/Drala-photos/meadow.jpg"), 
   require("../../assets/Drala-photos/stillwater.jpg"), 
   require("../../assets/Drala-photos/snowy.jpg"),
   require("../../assets/Drala-photos/grass.jpg"), 
