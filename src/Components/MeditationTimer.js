@@ -4,14 +4,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GET_MEDITATION_QUERY } from "../queries";
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { useMutation } from "@apollo/client";
-
+import { SelectList } from "react-native-dropdown-select-list";
 // const client = new ApolloClient({
 //   cache: new InMemoryCache(),
 // });
 
 const { width, height } = Dimensions.get("window");
 const circleWidth = width / 2;
-  
 
 const getData = async () => {
   try {
@@ -23,6 +22,7 @@ const getData = async () => {
 };
 
 const MeditationTimer = () => {
+  const [selected, setSelected] = React.useState("");
   const [timerRunning, setTimerRunning] = useState(false);
   const [duration, setDuration] = useState(1190);
   const intervalRef = useRef();
@@ -82,6 +82,7 @@ const MeditationTimer = () => {
 
   const startAnimation = () => {
     if (startButton === "Begin" || startButton === "Begin Again") {
+      {console.log(selected)}
       setStartButton("Pause");
       Animated.loop(
         Animated.sequence([
@@ -100,6 +101,7 @@ const MeditationTimer = () => {
       ).start();
     } else {
       setStartButton("Begin Again");
+      {console.log(selected)}
       Animated.loop(
         Animated.sequence([
           Animated.timing(move, {
@@ -125,6 +127,25 @@ const MeditationTimer = () => {
 
   return (
     <ImageBackground testID="timer-background" source={require("../../assets/home-temple.jpg")} style={styles.backgroundImage}>
+    <SelectList 
+        setSelected={(val) => setSelected(val)} 
+        data={[
+          {key: 5, value:'5 Minutes'},
+          {key: 10, value:'10 Minutes'},
+          {key: 15, value:'15 Minutes'},
+          {key: 20, value:'20 Minutes'},
+          {key: 25, value:'25 Minutes'},
+          {key: 30, value:'30 Minutes'},
+          {key: 35, value:'35 Minutes'},
+          {key: 40, value:'40 Minutes'},
+          {key: 45, value:'45 Minutes'},
+          {key: 50, value:'50 Minutes'},
+          {key: 55, value:'55 Minutes'},
+          {key: 60, value:'60 Minutes'},
+      ]} 
+        save="key"
+        placeholder="Select Length of Meditation"
+    />    
       <View style={styles.container}>
         {[0, 1, 2, 3, 4, 5, 6, 7].map((item) => {
           const rotation = move.interpolate({
