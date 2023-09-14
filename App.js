@@ -62,7 +62,7 @@ if (error) {
             />
             <Stack.Screen
               testID="timer-header-twenty"
-              name="20 Min Meditation Timer"
+              name="Meditation Timer"
               component={MeditationTimer}
             />
             <Stack.Screen name="Programs" component={Calendar} />
