@@ -22,9 +22,10 @@ const getData = async () => {
 };
 
 const MeditationTimer = () => {
-  const [selected, setSelected] = React.useState("");
+  const [selected, setSelected] = React.useState(0);
+  const [alert, setAlert] = React.useState("");
   const [timerRunning, setTimerRunning] = useState(false);
-  const [duration, setDuration] = useState(1190);
+  const [duration, setDuration] = useState(0);
   const intervalRef = useRef();
   const [userInfo, setUserInfo] = useState({userEmail: "",
     totalSittingTime: 0});
@@ -44,14 +45,14 @@ const MeditationTimer = () => {
     
     
     fetchUserInfo();
-    if (duration >= 1200 && userInfo) {
+    if (selected && duration >= selected*60 && userInfo) {
       setTimerRunning(false);
       startStopTimer();
       startAnimation();
       setStartButton("Meditation Complete!")      
       sendStats()
       setDuration(0)
-    } else if (duration >= 1200) {
+    } else if (selected && duration >= selected*60 ) {
       setTimerRunning(false);
       startStopTimer();
       startAnimation();
@@ -61,8 +62,13 @@ const MeditationTimer = () => {
   }, [duration]);
 
   const handleButtonPress = () => {
-    startAnimation();
-    startStopTimer();
+    if (selected) {
+      startAnimation();
+      startStopTimer();
+      setAlert("")
+    } else {
+      setAlert("Please select meditation time!")
+    }
   };
 
   const startStopTimer = () => {
@@ -82,7 +88,6 @@ const MeditationTimer = () => {
 
   const startAnimation = () => {
     if (startButton === "Begin" || startButton === "Begin Again") {
-      {console.log(selected)}
       setStartButton("Pause");
       Animated.loop(
         Animated.sequence([
@@ -101,7 +106,6 @@ const MeditationTimer = () => {
       ).start();
     } else {
       setStartButton("Begin Again");
-      {console.log(selected)}
       Animated.loop(
         Animated.sequence([
           Animated.timing(move, {
@@ -145,7 +149,30 @@ const MeditationTimer = () => {
       ]} 
         save="key"
         placeholder="Select Length of Meditation"
-    />    
+        boxStyles={{
+          backgroundColor: "white",
+        }}
+        dropdownStyles={{
+          backgroundColor: "white",
+          position: "absolute",
+          width: "100%",
+          marginTop: 50,
+        }}
+        dropdownTextStyles={{
+          fontSize: 15
+        }}
+        searchPlaceholder= "Select Length of Meditation"
+        searchicon= {<Text> </Text>}
+    />  
+    <Text style={{
+          color: "white",
+          fontSize: 20,
+          textAlign: "center",
+          fontWeight: "bold",
+          paddingTop: 15,
+        }}>
+          {alert}
+    </Text>  
       <View style={styles.container}>
         {[0, 1, 2, 3, 4, 5, 6, 7].map((item) => {
           const rotation = move.interpolate({
@@ -194,9 +221,6 @@ const MeditationTimer = () => {
               {startButton}
             </Text>
           </TouchableOpacity>
-          {/* {duration >= 1200 && (
-            <Text style={styles.message}>Nice meditation!</Text>
-          )} */}
         </View>
       </View>
     </ImageBackground>

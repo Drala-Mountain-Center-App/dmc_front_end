@@ -30,7 +30,7 @@ const Homepage = () => {
   const handleBoxPress = (boxNumber) => {
     switch (boxNumber) {
       case 1:
-        navigation.navigate("20 Min Meditation Timer");
+        navigation.navigate("Meditation Timer");
         break;
       case 2:
         navigation.navigate("Programs");
