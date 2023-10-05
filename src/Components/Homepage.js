@@ -54,9 +54,11 @@ const Homepage = () => {
     }
   };
 
+  useEffect(() => {
     navigation.setOptions({
       headerTintColor: "#3c304a"
     });
+  }, [navigation]);
 
      const handleLoginButtonPress = () => {
        if (userInfo) {
